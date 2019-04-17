@@ -7,3 +7,5 @@
 *.toc
 *~
 */auto/
+*.bbl
+*.blg
