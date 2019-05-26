@@ -1,0 +1,30 @@
+\begin{frame}{Introduction to Webscraping}
+\begin{itemize}
+	\item Basic idea: Turn information on website to structured data
+	\item Main approaches:
+	\begin{itemize}
+		\item Application Programming Interfaces (API): access points that return data in structured form
+		\item HTML parsing: Load URL, get needed information from source code, and save in structured form
+		\begin{itemize}
+			\item Depending on website, this requires HTML parsing, text matching, and/or browser automation
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{APIs}
+% Example of website screenshot and JSON result
+\begin{itemize}
+	\item If available, a convenient way to get pre-structured data (usually JSON or XML).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Important Python packages}
+\begin{itemize}
+	\item {\tt requests}: To load URL and recover source code (for static web pages)
+	\item {\tt beautifulsoup4}: To turn HTML code to navigable Python object
+	\item {\tt selenium}: To automate browsers
+	\item {\tt pandas}: To create DataFrames
+\end{itemize}
+
+\end{frame}
