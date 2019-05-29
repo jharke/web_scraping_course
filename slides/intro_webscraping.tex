@@ -1,14 +1,26 @@
 \begin{frame}{Introduction to Webscraping}
 \begin{itemize}
 	\item Basic idea: Turn information on website to structured data
-	\item Main approaches:
-	\begin{itemize}
-		\item Application Programming Interfaces (API): access points that return data in structured form
-		\item HTML parsing: Load URL, get needed information from source code, and save in structured form
+	% Screenshot of webpage and corresponding data
+	\item Typical workflow:
+	\begin{enumerate}
+		\item Look at website to decide best approach
 		\begin{itemize}
-			\item Depending on website, this requires HTML parsing, text matching, and/or browser automation
+			\item Is an Application Programming Interface (API) available?
+			\item Do the elements have fixed names?
+			\item Does the page load statically or dynamically?
 		\end{itemize}
-	\end{itemize}
+		\item Download information from URL
+		\item Turn information into structured data and save
+	\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Some concepts}
+\begin{itemize}
+	\item 
+	\item HTML parsing vs text matching
+	\item Static vs dynamic websites
 \end{itemize}
 \end{frame}
 
@@ -16,6 +28,15 @@
 % Example of website screenshot and JSON result
 \begin{itemize}
 	\item If available, a convenient way to get pre-structured data (usually JSON or XML).
+	\item Example: See 0_intro_webscraping.ipynb
+\end{itemize}
+\end{frame}
+
+\begin{frame}{APIs}
+% Example of website screenshot and JSON result
+\begin{itemize}
+	\item If available, a convenient way to get pre-structured data (usually JSON or XML).
+	\item Example: See 0_intro_webscraping.ipynb
 \end{itemize}
 \end{frame}
 
