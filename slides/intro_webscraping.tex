@@ -7,7 +7,7 @@
 		\item Look at website to decide best approach
 		\begin{itemize}
 			\item Is an Application Programming Interface (API) available?
-			\item Do the elements have fixed names?
+			\item Do the HTML elements have fixed names?
 			\item Does the page load statically or dynamically?
 		\end{itemize}
 		\item Download information from URL
@@ -18,7 +18,7 @@
 
 \begin{frame}{Some concepts}
 \begin{itemize}
-	\item 
+	\item APIs
 	\item HTML parsing vs text matching
 	\item Static vs dynamic websites
 \end{itemize}
@@ -28,15 +28,35 @@
 % Example of website screenshot and JSON result
 \begin{itemize}
 	\item If available, a convenient way to get pre-structured data (usually JSON or XML).
-	\item Example: See 0_intro_webscraping.ipynb
+	\item Example: See $0\_intro\_webscraping.ipynb$
 \end{itemize}
 \end{frame}
 
-\begin{frame}{APIs}
-% Example of website screenshot and JSON result
+\begin{frame}{HTML parsing}
+% Example of website screenshot and HTML code
 \begin{itemize}
-	\item If available, a convenient way to get pre-structured data (usually JSON or XML).
-	\item Example: See 0_intro_webscraping.ipynb
+	\item Use structure of HTML code to find needed information.
+	\item Works best if the code is well-structured and element names are fixed.
+	\item Example: See $0\_intro\_webscraping.ipynb$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Text pattern matching}
+% Example of website screenshot and HTML code with random names
+\begin{itemize}
+	\item If the HTML code is not well-structured or names change, text pattern matching is an alternative.
+	\item Idea: Take text from (parts of) a page and find needed information by matching a regular expression
+	\item Example: See $0\_intro\_webscraping.ipynb$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Static vs dynamic websites}
+% Example of website screenshot and HTML code with random names
+\begin{itemize}
+	\item On static websites, the entire content is loaded immediately.
+	\item On dynamic websites, content may load subsequently or after user action, making them usually more complicated to scrape.
+	% Show examples of static and dynamic websites and what happens if loading with requests
+	\item Example: See $0\_intro\_webscraping.ipynb$
 \end{itemize}
 \end{frame}
 
