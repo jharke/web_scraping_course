@@ -1,0 +1,15 @@
+\frametitle{Basic HTML documents structure}
+\begin{itemize}
+^^I\item HTML documents have a tree-like/nested structure
+^^I\item Elements can contain various levels of sub-elements that in the end contain some content
+^^I\item A very simple HTML document could look like this:
+\end{itemize}
+\begin{verbatim}
+<html>
+<body>
+  Hi all! <br>
+  Do you know
+  <a href="http://www.bccp-berlin.de" target="_blank">BCCP</a>?
+</body>
+</html>
+\end{verbatim}

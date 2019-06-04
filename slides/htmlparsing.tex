@@ -1,7 +1,58 @@
-\begin{frame}{Basic principle}
-\begin{enumerate}
-	\item Load URL and save HTML source code: {\tt requests} or {\tt urllib2}
-	\item Convert source code to Python object: {\tt beautifulsoup4}
-	\item Navigate the source code and save needed elements
-\end{enumerate}
+\begin{frame}{HTML parsing}
+\begin{itemize}
+	\item After obtaining the HTML source code, how to obtain the information required?
+	\item If the HTML code is well-structured and its tags have (more or less) unique names, we can navigate the HTML elements to get the information we want.
+	\item The {\tt beautifulsoup4} package converts the HTML code into a Python object that can be navigated using properties and functions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Some HTML terms}
+\begin{itemize}
+	\item Consider {\tt <a href="http://www.bccp-berlin.de" target="\_blank">BCCP</a>}
+	\item HTML Elements
+	\begin{itemize}
+		\item The entire thing is an HTML element. Specifically, it is a link leading to the BCCP website and displayed as "BCCP".
+		\item HTML elements usually consist of a start tag and an end tag.
+	\end{itemize}
+	\item HTML Tags
+	\begin{itemize}
+		\item The start tag of the element above is {\tt <a>} and the end tag is the corresponding {\tt </a>}
+		\item Start tag can and sometimes must contain attributes.
+	\end{itemize}
+	\item HTML Attributes
+	\begin{itemize}
+		\item The {\tt <a>} tag contains the attribute {\tt href} and {\tt target}. {\tt href} specifies the destination to which the link should lead and {\tt target="\_blank"} specifies that the link should be opened in a new window.
+		\item For web scraping purposes, the attributes {\tt class} and {\tt id} are usually useful as these are often used to identify certain (groups of) elements.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Basic HTML documents structure}
+\begin{itemize}
+	\item HTML documents have a tree-like/nested structure
+	\item Elements can contain various levels of sub-elements that in the end contain some content
+	\item A very simple HTML document could look like this:
+\end{itemize}
+\begin{verbatim}
+<html>
+<body>
+  Hi all! <br>
+  Do you know 
+  <a href="http://www.bccp-berlin.de" target="_blank">BCCP</a>?
+</body>
+</html>
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Example for today}
+\begin{itemize}
+	\item Let's scrape the details of all upcoming BCCP events: \url{http://www.bccp-berlin.de/events/all-events/}
+	\item Steps:
+		\begin{enumerate}
+			\item Analyze HTML structure
+			\item Save information on events available on the front page
+			\item Loop through individual event pages to get details
+			\item Combine to DataFrame
+		\end{enumerate}
+\end{itemize}
 \end{frame}
