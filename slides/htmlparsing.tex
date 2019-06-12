@@ -6,9 +6,12 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Some HTML terms}
+\begin{frame}[fragile]{Some HTML terms}
 \begin{itemize}
-	\item Consider {\tt <a href="http://www.bccp-berlin.de" target="\_blank">BCCP</a>}
+	\item Consider 
+		\begin{verbatim}
+<a href="http://www.bccp-berlin.de" target="_blank">BCCP</a>
+\end{verbatim}	 
 	\item HTML Elements
 	\begin{itemize}
 		\item The entire thing is an HTML element. Specifically, it is a link leading to the BCCP website and displayed as "BCCP".
@@ -27,27 +30,42 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Basic HTML documents structure}
+\begin{frame}{Basic HTML documents structure}
 \begin{itemize}
 	\item HTML documents have a tree-like/nested structure
 	\item Elements can contain various levels of sub-elements that in the end contain some content
-	\item A very simple HTML document could look like this:
 \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{HTML document example}
 \begin{verbatim}
 <html>
 <body>
-  Hi all! <br>
-  Do you know 
-  <a href="http://www.bccp-berlin.de" target="_blank">BCCP</a>?
+<p>
+Hi all!
+</p>
+<p>
+Do you know 
+<a href="http://www.bccp-berlin.de" target="_blank">BCCP</a>?
+</p>
 </body>
 </html>
 \end{verbatim}
 \end{frame}
 
-\begin{frame}{Tree structure}
+\begin{frame}[fragile]{Tree structure}
+\begin{center}
 \begin{tikzpicture}
-\draw (0,0) node {\verb{<html>}};
+\draw (0,0) node[above] {\verb!<html>!};
+\draw (0,0) -- (0,-1) node[below] {\verb!<body>!};
+\draw (0,-1.5) -- (0,-2);
+\draw (-2,-2.5) node[below] {\verb!<p>!} -- (-2,-2) -- (2,-2) -- (2,-2.5) node[below] {\verb!<p>!};	
+\draw (-2,-3) -- (-2,-4) node[below] {Hi all!};
+\draw (2,-3) -- (2,-3.5);
+\draw (1,-4) node[below] {Do you know} -- (1,-3.5) -- (3,-3.5) -- (3,-4) node[below] {\verb!<a>!} -- (3,-3.5) -- (5,-3.5) -- (5,-4) node[below] {?};
+\draw (3,-4.5) -- (3,-5) node[below] {BCCP};
 \end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}{Example for today}
@@ -56,9 +74,89 @@
 	\item Steps:
 		\begin{enumerate}
 			\item Analyze HTML structure
+			\item Load source code
 			\item Save information on events available on the front page
 			\item Loop through individual event pages to get details
 			\item Combine to DataFrame
 		\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Analyzing the HTML structure}
+\begin{itemize}
+	\item Information on events saved in div elements
+\end{itemize}
+\begin{verbatim}
+<div class="eventList">
+...
+<div class="event-list-item event-type1">...</div>
+...
+<div class="event-list-item event-type2">...</div>
+...
+</div>
+\end{verbatim}
+
+\framebreak
+
+\begin{itemize}
+	\item Details are saved in sub-elements in each \verb!//div[contains(@class,'event-list-item')]! element
+\end{itemize}
+\begin{verbatim}
+<div class="event-list-item event-type1">
+ <div class="top-bar">
+  <span class="date single">June 27, 2019</span>
+  <span class="b-events__item__type">Seminar</span>
+ </div>
+ <div class="b-events__item__inner">
+  <div class="content">
+   <div class="genres">Berlin Behavioral Economics Seminar</div>
+   <h2 class="eventHeader">
+    <a href="/events/all-events/events-detail/
+    felix-holzmeister-university-of-innsbruck/">
+     Felix Holzmeister (University of Innsbruck)
+    </a>
+   </h2>
+   <div class="teaser">Delegated Decision Making in Finance</div>
+   <div class="location">
+    <strong class="label">Location</strong>
+    <div class="address">
+     <span class="name">WZB</span>
+     <span class="address">Reichpietschufer 50, Room B001</span>
+     <span class="zip">10785</span>
+     <span class="place">Berlin</span>
+    </div>
+   </div>
+   <div class="time">
+    <strong class="label">Time</strong>
+    <span>16:45–18:00</span>
+   </div>
+  </div>
+  <div class="button detail">
+   <a title="Felix Holzmeister (University of Innsbruck)" 
+   href="/events/all-events/events-detail/
+   felix-holzmeister-university-of-innsbruck/">
+    Event Details
+   </a>
+  </div>
+ </div>
+</div>
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Getting the data}
+\begin{itemize}
+	\item Idea: Loop through listings, save details, visit details page to load more info
+	\item See ``htmlparsing.ipynb''.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Other BeautifulSoup functions}
+\begin{itemize}
+	\item Look at the very good documentation: \url{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}
+	\item If unique tag names are not available, navigation of the tree rather than searching it is possible, e.g.:
+	\begin{itemize}
+		\item Vertically: \verb!.parent!, \verb!.parents!, \verb!.children!
+		\item Horizontally: \verb!.next_sibling!, \verb!.previous_sibling!
+	\end{itemize}
 \end{itemize}
 \end{frame}
