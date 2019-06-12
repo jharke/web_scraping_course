@@ -25,11 +25,23 @@
 \end{frame}
 
 \begin{frame}{APIs}
-% Example of website screenshot and JSON result
 \begin{itemize}
 	\item If available, a convenient way to get pre-structured data (usually JSON or XML).
-	\item Example: See $0\_intro\_webscraping.ipynb$
+	\item Example: OpenStreetMap (OSM) (\url{https://www.openstreetmap.org})
+	\begin{itemize}
+		\item When searching manually, results can be shown as XML. Automating the search on OpenStreetMap and clicking on the relevant links would therefore be a way to save this data.
+		\item However, OSM offers several APIs that simplify this task. One API is the Nominatim API (\url{https://nominatim.openstreetmap.org}).
+	\end{itemize}
 \end{itemize}
+\end{frame}
+
+\begin{frame}{API example: Nominatim API for OSM}
+\begin{itemize}
+	\item See \url{https://nominatim.org/release-docs/develop/api/Search/} for documentation on search syntax
+	\item Search for 'diw berlin' and return as JSON: \url{https://nominatim.openstreetmap.org/search?q=diw+berlin&format=json}
+	\item The JSON format has a similar structure as dictionaries in Python and can easily be transformed to DataFrames.
+\end{itemize}
+
 \end{frame}
 
 \begin{frame}{HTML parsing}
@@ -37,7 +49,15 @@
 \begin{itemize}
 	\item Use structure of HTML code to find needed information.
 	\item Works best if the code is well-structured and element names are fixed.
-	\item Example: See $0\_intro\_webscraping.ipynb$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{HTML parsing example: eBay search results}
+\begin{itemize}
+	\item Look at results for 'star wars blu ray' on eBay: \url{https://www.ebay.de/sch/i.html?_nkw=star+wars+blu+ray}
+	\item Most browsers have a feature to look at source code (e.g. in Chrome, you can right click on any website element and click on 'Inspect').
+	\item On eBay, the HTML tags containing certain content always have the same name, this simplifies HTML parsing.
+	\item Foe example, the tag \textit{<div id="ResultSetItems">} contains all results. Inside this tag, the individual listings are saved in tags called \textit{<li class="sresult">}. In Chrome, you can also look for elements using the XPATH syntax (e.g. for the individual listings: \textit{//li[contains(@class,'sresult')]}). More information on XPATH here: \url{https://www.w3schools.com/xml/xpath_syntax.asp}
 \end{itemize}
 \end{frame}
 
@@ -46,17 +66,24 @@
 \begin{itemize}
 	\item If the HTML code is not well-structured or names change, text pattern matching is an alternative.
 	\item Idea: Take text from (parts of) a page and find needed information by matching a regular expression
-	\item Example: See $0\_intro\_webscraping.ipynb$
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Example of website without clear HTML tag names: Airbnb}
+\begin{itemize}
+	\item Search for homes in Berlin-Mitte: \url{https://www.airbnb.de/s/Berlin-Mitte--Berlin/homes?query=Berlin-Mitte\%2C\%20Berlin}
+	\item Say you wanted to get the number of results for this search. The element does not have a clear name. Using HTML parsing is still possible but is prone to errors. Instead, one could match on a regular expression.
+\end{itemize}
+
 \end{frame}
 
 \begin{frame}{Static vs dynamic websites}
 % Example of website screenshot and HTML code with random names
 \begin{itemize}
-	\item On static websites, the entire content is loaded immediately.
-	\item On dynamic websites, content may load subsequently or after user action, making them usually more complicated to scrape.
+	\item On static websites, the entire content is loaded immediately. E.g. eBay: \url{https://www.ebay.de/sch/i.html?_nkw=star+wars+blu+ray}
+	\item On dynamic websites, content may not load instantaneously or only after user action, making them usually more complicated to scrape. E.g. Airbnb: \url{https://www.airbnb.de/s/Berlin-Mitte--Berlin/homes?query=Berlin-Mitte\%2C\%20Berlin} (Try disabling JavaScript in your browser and reloading the page).
 	% Show examples of static and dynamic websites and what happens if loading with requests
-	\item Example: See $0\_intro\_webscraping.ipynb$
+	\item Getting the complete source code from a dynamic website can be done with browser automation. The idea is to open a website in an actual browser (and interacting with it if necessary) and save the source code of the content from there.
 \end{itemize}
 \end{frame}
 
@@ -64,7 +91,7 @@
 \begin{itemize}
 	\item {\tt requests}: To load URL and recover source code (for static web pages)
 	\item {\tt beautifulsoup4}: To turn HTML code to navigable Python object
-	\item {\tt selenium}: To automate browsers
+	\item {\tt selenium}: For browser automation
 	\item {\tt pandas}: To create DataFrames
 \end{itemize}
 
