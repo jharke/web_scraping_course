@@ -1,0 +1,30 @@
+\begin{frame}[fragile]{Why browser automation?}
+\begin{itemize}
+	\item If the content of a page is loaded dynamically (e.g. with JavaScript), using \verb!requests! could yield an ``empty'' source code.
+	\item Browser automation is then a way to load the page in an actual browser and let the JavaScript load as if you actually visited the page.
+	\item Because this uses an actual browser and a browser driver, this approach is less stable and crashes can occur. Further, loading a page in a browser usually takes more time then loading it in \verb!requests!.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example for today}
+\begin{itemize}
+	\item Let us scrape all future events from the BERA website: \url{https://www.berlin-econ.de/events}.
+	\item In order to load all events, we need to click on the bottom buttons to navigate through the results pages.
+	\item However, these buttons do not link to a new URL but load content using JavaScript:
+\end{itemize}
+\begin{verbatim}
+<a href="javascript:;" class="item" data-request-success="scroll(0,0)" 
+data-request="onEventSearch" 
+data-request-update="'@events-list': '#event-results'" 
+data-request-data="page:2">Next →</a>
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Approach}
+\begin{enumerate}
+	\item Load events page in browser
+	\item Save information available on all events
+	\item Click to the next page
+	\item Repeat until no other next page available
+\end{enumerate}
+\end{frame}

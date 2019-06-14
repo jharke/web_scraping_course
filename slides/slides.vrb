@@ -1,9 +1,12 @@
-\frametitle{Other BeautifulSoup functions}
+\frametitle{Example for today}
 \begin{itemize}
-^^I\item Look at the very good documentation: \url{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}
-^^I\item If unique tag names are not available, navigation of the tree rather than searching it is possible, e.g.:
-^^I\begin{itemize}
-^^I^^I\item Vertically: \verb!.parent!, \verb!.parents!, \verb!.children!
-^^I^^I\item Horizontally: \verb!.next_sibling!, \verb!.previous_sibling!
-^^I\end{itemize}
+^^I\item Let us scrape all future events from the BERA website: \url{https://www.berlin-econ.de/events}.
+^^I\item In order to load all events, we need to click on the bottom buttons to navigate through the results pages.
+^^I\item However, these buttons do not link to a new URL but load content using JavaScript:
 \end{itemize}
+\begin{verbatim}
+<a href="javascript:;" class="item" data-request-success="scroll(0,0)"
+data-request="onEventSearch"
+data-request-update="'@events-list': '#event-results'"
+data-request-data="page:2">Next →</a>
+\end{verbatim}
