@@ -37,14 +37,44 @@ data-request-data="page:2">Next →</a>
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{First, analyze the HTML code of \url{https://www.berlin-econ.de/events}}
+\begin{itemize}
+	\item Events are saved in a \verb!<div class='event-results'>! element
+	\item Inside this, events for different days are separated by a \verb!<div class='event-date-separator'>! element
+	\item The actual events are then saved in a \verb!<div class='ui segments'>! elements, more specifically, in \verb!<div class='ui segment'>! elements
+	\item The buttons to navigate to the next results pages are saved in the last element in \verb!<div class='event-results'>! (\verb!<div class='ui pagination menu'>!)
+	\item Need a mix of navigating and searching the HTML document
+\end{itemize}
+\end{frame}
+
 \begin{frame}[fragile]{Approach}
 \begin{enumerate}
 	\item Load events page in browser
-	\item Save information available on all events
-	\item Click to the next page
-	\item Repeat until no other next page available
+	\item Loop through elements in \verb!<div class='event-results'>!
+	\begin{enumerate}
+		\item If it is a date, save the date
+		\item If it is an event, save the event details
+		\item If it is the buttons, click the button for the next page, if available.
+	    \item Repeat until no other next page available
+	\end{enumerate}
+	\item Turn to DataFrame and save
 \end{enumerate}
 \begin{itemize}
 	\item See \verb!automation.ipynb!
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Notes on interacting with the webpage}
+\begin{itemize}
+	\item In order to be able to click the button, we need to scroll it into view first
+	\item For this, we need to tell \verb!selenium! where the wanted element is and have it scroll there
+	\item This can be done e.g. using XPATH syntax
+	\item Typical steps are therefore:
+	\begin{enumerate}
+		\item Find the element in the source code (e.g. \verb!driver.find_element_by_xpath()!, other alternatives here: \url{https://selenium-python.readthedocs.io/locating-elements.html})
+		\item Scroll it into view 
+		\item Interact with it (scrolling and interacting can both be done using \verb!ActionChains!, see \url{https://seleniumhq.github.io/selenium/docs/api/py/webdriver/selenium.webdriver.common.action_chains.html})
+	\end{enumerate}
+\end{itemize}
+
 \end{frame}
