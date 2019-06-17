@@ -20,11 +20,31 @@ data-request-data="page:2">Next →</a>
 \end{verbatim}
 \end{frame}
 
-\begin{frame}{Approach}
+\begin{frame}[fragile]{Some technical notes}
+\begin{itemize}
+	\item We will use the \verb!selenium! package
+	\begin{itemize}
+		\item It allows you to control a browser from a Python script
+		\item The documentation can be found here: \url{https://selenium-python.readthedocs.io/}
+	\end{itemize}
+	\item Besides \verb!selenium!, you need to have an actual browser installed that you are going to use and a compatible browser driver that \verb!selenium! can use to control the browser
+	\begin{itemize}
+		\item We will use Google's Chrome browser (\url{https://www.google.com/chrome/}) and the corresponding ChromeDriver (\url{http://chromedriver.chromium.org/}). Some parts of the code might have a different syntax for different browsers.
+		\item \verb!selenium!'s documentation includes links to drivers for four popular browsers: \url{https://selenium-python.readthedocs.io/installation.html#drivers}
+		\item The documentation for the various browser driver types in \verb!selenium! can be found here: \url{https://seleniumhq.github.io/selenium/docs/api/py/api.html}
+		\item Make sure that the driver version fits your installed browser version
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Approach}
 \begin{enumerate}
 	\item Load events page in browser
 	\item Save information available on all events
 	\item Click to the next page
 	\item Repeat until no other next page available
 \end{enumerate}
+\begin{itemize}
+	\item See \verb!automation.ipynb!
+\end{itemize}
 \end{frame}

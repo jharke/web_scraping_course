@@ -84,6 +84,7 @@ Do you know
 
 \begin{frame}[fragile,allowframebreaks]{Analyzing the HTML structure}
 \begin{itemize}
+	\item Open \url{http://www.bccp-berlin.de/events/all-events/} in a browser and inspect the source code
 	\item Information on events saved in div elements
 \end{itemize}
 \begin{verbatim}
@@ -150,10 +151,28 @@ Do you know
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Other BeautifulSoup functions}
+\begin{frame}[fragile]{From website to Python soup}
+\begin{enumerate}
+	\item \verb!requests!: Load website and save source code as string
+	\item \verb!BeautifulSoup!: Take source string and parse to get soup object
+		\begin{itemize}
+			\item There are three different parsers: \verb!html.parser!, \verb!lxml!, \verb!html5lib!
+			\item Differences are discussed here: \url{https://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-a-parser}
+			\item I usually use \verb!lxml!
+		\end{itemize}
+	\item Soup object includes functions and attributes that facilitate searching and navigating HTML elements
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Some BeautifulSoup functions}
 \begin{itemize}
 	\item Look at the very good documentation: \url{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}
-	\item If unique tag names are not available, navigation of the tree rather than searching it is possible, e.g.:
+	\item You can either \textit{search} the document:
+	\begin{itemize}
+		\item \verb!.find_all()!: Find all elements that match a certain condition. Returns a list.
+		\item \verb!.find()!: Same as \verb!find_all()! but only returns first match.
+	\end{itemize}
+	\item If unique tag names are not available, \textit{navigation} of the HTML tree rather than searching it is possible, e.g.:
 	\begin{itemize}
 		\item Vertically: \verb!.parent!, \verb!.parents!, \verb!.children!
 		\item Horizontally: \verb!.next_sibling!, \verb!.previous_sibling!
