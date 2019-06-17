@@ -20,8 +20,6 @@ subsectionpage=progressbar
 % Other packages
 \usepackage[export]{adjustbox}% http://ctan.org/pkg/adjustbox
 \usepackage{mathptmx}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
@@ -34,13 +32,22 @@ subsectionpage=progressbar
 \usepackage{tabulary}
 \usepackage{booktabs}
 
+\usepackage{minted}
+\definecolor{solarized-light-bg}{HTML}{FDF6E3}
+\setminted{
+  style=solarized-light,
+  bgcolor=solarized-light-bg,
+  fontsize=\footnotesize
+}
+\usepackage{bookmark}
+
 \usepackage{babel}
 % \usepackage{pgf}
 \begin{document}
 \title[Web scraping]{BCCP web scraping course}
 \titlegraphic{}
 
-\author[]{}
+% \author[]{}
 
 \date[]{}
 
@@ -96,7 +103,3 @@ subsectionpage=progressbar
 \subsection{Own script}
 
 \end{document}
-%%% Local Variables:
-%%% mode: xelatex
-%%% TeX-master: t
-%%% End:
