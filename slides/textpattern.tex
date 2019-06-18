@@ -1,0 +1,44 @@
+
+\begin{frame}
+    \frametitle{Text pattern matching}
+    \begin{itemize}
+        \item Regular expressions (regex) are rules for the set of
+        possible strings to match.
+        \item Use regex to search and extract substrings.
+        \item Set might contain words, whole sentences, or e-mail
+        addresses, or anything you like.
+        \item Are there matches for the pattern anywhere in the string?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Regular Expression Syntax}
+    \begin{itemize}
+        \item \mintinline{bash}{.} matches any character except a newline.
+        \item \mintinline{bash}{^} matches the start of the string.
+        \item \mintinline{bash}{$} matches the end of the string.
+        \item \mintinline{bash}{*} match 0 or more repetitions of the preceding RE.
+        \item \mintinline{bash}{+} match 1 or more repetitions of the preceding RE.
+        \item \mintinline{bash}{?} match 0 or 1 repetitions of the preceding RE.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,fragile]
+    \frametitle{Text pattern matching --- Example}
+\begin{minted}{python}
+import re
+
+# Find all href tags with http(s) link
+links_href = re.findall('href="http[s]?://.*?"', html)
+
+# Find all href tags with http(s) link and return links only
+links_only = re.findall('href="(http[s]?://.*?")', html)
+
+# Find all href tags with http(s) link and split
+links_parts = re.findall('href="(http[s]?)://(.*?)"', html)
+[x[1] for x in links_parts]
+
+# Find all numbers
+re.findall('\\d+\\.?\\d?', html)
+\end{minted}
+\end{frame}
