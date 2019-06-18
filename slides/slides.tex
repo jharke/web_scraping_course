@@ -1,5 +1,5 @@
 
-\documentclass[english]{beamer}
+\documentclass[english,aspectratio=169]{beamer}
 \usepackage{appendixnumberbeamer}
 \usetheme[
 progressbar=foot,
@@ -20,8 +20,6 @@ subsectionpage=progressbar
 % Other packages
 \usepackage[export]{adjustbox}% http://ctan.org/pkg/adjustbox
 \usepackage{mathptmx}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
@@ -34,13 +32,24 @@ subsectionpage=progressbar
 \usepackage{tabulary}
 \usepackage{booktabs}
 
+\usepackage{minted}
+\definecolor{solarized-light-bg}{HTML}{FDF6E3}
+\setminted{
+  style=solarized-light,
+  bgcolor=solarized-light-bg,
+  fontsize=\footnotesize,
+  python3=true
+}
+\usepackage{bookmark}
+
 \usepackage{babel}
 % \usepackage{pgf}
+
 \begin{document}
-\title[Web scraping]{BCCP web scraping course}
+\title[Web scraping]{BCCP Web Scraping Course}
 \titlegraphic{}
 
-\author[]{}
+% \author[]{}
 
 \date[]{}
 
@@ -50,6 +59,8 @@ subsectionpage=progressbar
 
 \section{Day 1}
 \label{sec:day1}
+
+% General intro here?
 
 \begin{frame}
     \frametitle{Table of Contents}
@@ -91,10 +102,8 @@ subsectionpage=progressbar
 
 \subsection{Browser automation}
 
+\input{automation}
+
 \subsection{Own script}
 
 \end{document}
-%%% Local Variables:
-%%% mode: xelatex
-%%% TeX-master: t
-%%% End:

@@ -1,0 +1,10 @@
+\frametitle{Approach}
+\begin{enumerate}
+^^I\item Load events page in browser
+^^I\item Save information available on all events
+^^I\item Click to the next page
+^^I\item Repeat until no other next page available
+\end{enumerate}
+\begin{itemize}
+^^I\item See \verb!automation.ipynb!
+\end{itemize}

@@ -9,19 +9,186 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Very short intro to Python}
+    \frametitle{Why Python for Webscraping?}
     \begin{itemize}
-        \item
+        \item<1:> Common web data structures are similar to data
+        structures in Python.
+        \item<2:> Many Python packages for webscraping and APIs can be
+        found.
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Python syntax}
+\begin{frame}[fragile]
+    \frametitle{Python interpreter --- interactive mode}
+    \begin{itemize}
+        \item input prompt \mintinline{python}{>>>}
+        \item comments \mintinline{python}{#}
+        \item operators \mintinline{python}{+}, \mintinline{python}{-}, \mintinline{python}{*} and \mintinline{python}{/}
+    \end{itemize}
+\begin{minted}{python}
+>>> 2 + 2
+4
+>>> 8 / 5  # division always returns a floating point number
+1.6
+>>> 5 ** 2  # 5 squared
+25
+\end{minted}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Further reading}
+\begin{frame}[fragile]
+    \frametitle{Python data structures}
     \begin{itemize}
-        \item
+        \item Lists (\mintinline{python}{value})\\
+\begin{minted}{python}
+squares = [1, 4, 9, 16, 25]
+\end{minted}
+        \item Dictionaries (\mintinline{python}{key: value})\\
+\begin{minted}{python}
+followers = {'kevin': 15, 'julian': 9}
+\end{minted}
     \end{itemize}
 \end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Python data structures --- Lists}
+\begin{minted}{python}
+>>> squares = [1, 4, 9, 16, 25]
+>>> squares[0]  # indexing returns the item
+1
+>>> squares[-1]
+25
+>>> squares[-3:]  # slicing returns a new list
+[9, 16, 25]
+>>> squares.append((len(squares) + 1) ** 2)  # using append() method
+>>> squares
+[1, 4, 9, 16, 25, 36]
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Python data structures --- Dictionaries}
+    \begin{itemize}
+        \item Dictionaries (\mintinline{python}{key: value})\\
+        \item Unlike lists, dictionaries are indexed by keys not by positions.
+\begin{minted}{python}
+>>> followers = {'kevin': 15, 'julian': 9}
+>>> followers['kevin']
+15
+>>> followers['kevin'] = 16
+\end{minted}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common web data structures}
+        For example, JSON nearly identical to combination of Python's dictionaries and lists.
+\begin{minted}{json}
+[
+  {
+    "id": "1290837412912998347",
+    "followers": "15",
+    "name": "Kevin"
+  },
+  {
+    "id": "1290837412973490803",
+    "followers": "9",
+    "name": "Julian"
+  }
+]
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Functions}
+    \begin{itemize}
+        \item  \mintinline{python}{def} defines a function.
+        \item Followed by function name with parenthesized sequence of parameters.
+        \item Body of function must be indented.
+    \end{itemize}
+\begin{minted}{python}
+>>> def list_append(a, mylist=[]):
+...     """Example documentation string:
+...     Append value to list. mylist defaults to empty list."""
+...     mylist.append(a)
+...     return mylist
+
+>>> list_append(97, [99, 98])
+[99, 98, 97]
+
+>>> list_append(1)
+[1]
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Modules}
+    \begin{itemize}
+        \item Definitions (functions and variables) can be saved in
+        \textbf{modules}. Our example function can be saved under
+        \mintinline{python}{list_operations.py}.
+        \item Such modules can be imported into the interpreter,
+        scripts, or other modules.
+\begin{minted}{python}
+import list_operations
+list_operations.list_append(1)
+
+from list_operations import list_append
+list_append(1)
+
+import list_operations as lo
+lo.list_append(1)
+\end{minted}
+        \item Bad practice: \mintinline{python}{from sound.effects import *}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,fragile]
+    \frametitle{Packages}
+    \begin{itemize}
+        \item Packages structure modules namespace by using dotted
+        module names. \mintinline{python}{A.B} designates a submodule
+        named \mintinline{python}{B} in a package named
+        \mintinline{python}{A}.
+\begin{minted}{python}
+import matplotlib.pyplot as plt
+\end{minted}
+        \item Packages can be installed with pip.
+\begin{minted}{bash}
+pip install matplotlib
+\end{minted}
+        \item A common convention is to have a list of packages in requirements.txt:
+\begin{minted}{bash}
+pip install -r requirements.txt
+\end{minted}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Files}
+    \begin{itemize}
+        \item Reading and writing files
+\begin{minted}{python}
+f = open('workfile', 'r') # read-only
+f = open('workfile', 'w') # write-only
+f = open('workfile', 'a') # appending
+
+f = open('workfile') # read-only, as mode defaults to 'r'
+\end{minted}
+        \item Closing files
+\begin{minted}{python}
+f.close() # Manually close a file
+
+with open('workfile') as f: # with closes file "automatically"
+     read_data = f.read()
+\end{minted}
+        \item Several packages offer file operations
+        \mintinline{python}{pandas.read_csv()}
+    \end{itemize}
+\end{frame}
+
+% \begin{frame}
+%     \frametitle{Further reading}
+%     \begin{itemize}
+%         \item
+%     \end{itemize}
+% \end{frame}
