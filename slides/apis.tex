@@ -1,42 +1,212 @@
 
 \begin{frame}
     \frametitle{Application Programming Interface}
+
+    Why APIs?
+
     \begin{itemize}
-        \item
+        \item Data owners want know who is using their services.
+        \item Data owners want to limit requests.
+        \item Data owners want to supply data in their preferred format.
     \end{itemize}
 \end{frame}
+
+\subsubsection*{Twitter API}
+\label{sec:twitter-api}
 
 \begin{frame}
     \frametitle{Twitter API}
     \begin{itemize}
-        \item "Conduct historical research and search from Twitter's massive
-        archive of publicly-available Tweets posted since March 2006?"
-        \item "Listen in real-time for Tweets of interest?"
+        \item ``Conduct historical research and search from Twitter's
+        massive archive of publicly-available Tweets posted since
+        March 2006?''
+        \item ``Listen in real-time for Tweets of interest?''
     \end{itemize}
 \end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Tweepy package}
+
+    We use the Tweepy package to access twitter's RESTful API.
+
+\begin{minted}{python}
+user = api.get_user('twitter')
+
+# tweepy models contain the data plus and some methods.
+print(user.screen_name)
+print(user.followers_count)
+for friend in user.friends():
+    print(friend.screen_name)
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Twitter API --- JSON Example}
+
+    Packages usually also allow to access the JSON directly, which
+    often contains more information than provided by the API.
+
+    \begin{minted}{python}
+import tweepy
+from twitter_auth import auth
+
+def get_tweets(api, screen_name):
+    tweets_json = [status._json for status in tweepy.Cursor(
+        api.user_timeline,
+        screen_name=screen_name,
+        tweet_mode='extended'
+    ).items(2)]
+    return tweets_json
+
+api = tweepy.API(auth)
+tweets = get_tweets(api, '@guardian')
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Twitter API --- JSON Example}
+\begin{minted}[fontsize=\tiny]{python}
+{'contributors': None,
+ 'coordinates': None,
+ 'created_at': 'Tue Nov 20 17:56:53 +0000 2018',
+ 'display_text_range': [0, 97],
+ 'entities': {'hashtags': [],
+              'symbols': [],
+              'urls': [{'display_url': 'trib.al/hDWAWvZ',
+                        'expanded_url': 'https://trib.al/hDWAWvZ',
+                        'indices': [74, 97],
+                        'url': 'https://t.co/GpWbVaZV3F'}],
+              'user_mentions': []},
+ 'favorite_count': 17,
+ 'favorited': False,
+ 'full_text': 'I was arrested at a climate change protest – it was worth it | '
+              'Gavin Turk https://t.co/GpWbVaZV3F',
+ 'geo': None,
+ 'id': 1064940660942352385,
+ 'id_str': '1064940660942352385',
+ 'in_reply_to_screen_name': None,
+ 'in_reply_to_status_id': None,
+ 'in_reply_to_status_id_str': None,
+ 'in_reply_to_user_id': None,
+ 'in_reply_to_user_id_str': None,
+ 'is_quote_status': False,
+ 'lang': 'en',
+ 'place': None,
+ 'possibly_sensitive': False,
+ 'retweet_count': 6,
+ 'retweeted': False,
+ 'source': '<a href="http://www.socialflow.com" rel="nofollow">SocialFlow</a>',
+ 'truncated': False,
+ 'user': {'contributors_enabled': False,
+          'created_at': 'Thu Nov 05 23:49:19 +0000 2009',
+          'default_profile': False,
+          'default_profile_image': False,
+          'description': 'The need for independent journalism has never been '
+                         'greater. Become a Guardian supporter: '
+                         'https://t.co/gWyuUVlObq',
+          'entities': {'description': {'urls': [{'display_url': 'support.theguardian.com',
+                                                 'expanded_url': 'https://support.theguardian.com',
+                                                 'indices': [89, 112],
+                                                 'url': 'https://t.co/gWyuUVlObq'}]},
+                       'url': {'urls': [{'display_url': 'theguardian.com',
+                                         'expanded_url': 'https://www.theguardian.com',
+                                         'indices': [0, 23],
+                                         'url': 'https://t.co/c53pnmnuIT'}]}},
+          'favourites_count': 147,
+          'follow_request_sent': False,
+          'followers_count': 7409250,
+          'following': False,
+          'friends_count': 1084,
+          'geo_enabled': False,
+          'has_extended_profile': False,
+          'id': 87818409,
+          'id_str': '87818409',
+          'is_translation_enabled': True,
+          'is_translator': False,
+          'lang': 'en',
+          'listed_count': 58265,
+          'location': 'London',
+          'name': 'The Guardian',
+          'notifications': False,
+          'profile_background_color': 'FFFFFF',
+          'profile_background_image_url': 'http://abs.twimg.com/images/themes/theme1/bg.png',
+          'profile_background_image_url_https': 'https://abs.twimg.com/images/themes/theme1/bg.png',
+          'profile_background_tile': False,
+          'profile_banner_url': 'https://pbs.twimg.com/profile_banners/87818409/1542013526',
+          'profile_image_url': 'http://pbs.twimg.com/profile_images/1061907978633297921/aPuDuMXq_normal.jpg',
+          'profile_image_url_https': 'https://pbs.twimg.com/profile_images/1061907978633297921/aPuDuMXq_normal.jpg',
+          'profile_link_color': '005789',
+          'profile_sidebar_border_color': 'FFFFFF',
+          'profile_sidebar_fill_color': 'CAE3F3',
+          'profile_text_color': '333333',
+          'profile_use_background_image': False,
+          'protected': False,
+          'screen_name': 'guardian',
+          'statuses_count': 484822,
+          'time_zone': None,
+          'translator_type': 'regular',
+          'url': 'https://t.co/c53pnmnuIT',
+          'utc_offset': None,
+          'verified': True}}
+\end{minted}
+
+\end{frame}
+
 
 \begin{frame}
     \frametitle{World Bank API}
     \begin{itemize}
-        \item https://wbdata.readthedocs.io/en/latest/
-        \item http://api.worldbank.org/v2/sources/57/country/ALB/series/AG.AGR.TRAC.NO
-        \item
+        \item Access data without authentication.
+        \item http://api.worldbank.org/v2/
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{world\_bank\_data --- Example}
+\begin{minted}{python}
+import world_bank_data as wb
+
+# GET indicators
+wb.get_indicators(topic=3, source=2)
+
+# Get estimates for the world population:
+wb.get_series('SP.POP.TOTL', date='2010:2018')
+\end{minted}
+\end{frame}
+
+\begin{frame}
+    \frametitle{There might be APIs without a working package}
+    \begin{itemize}
+        \item Check more general packages. For example, https://pandas-datareader.readthedocs.io/en/latest/readers/
+        \item Write your own functions.
     \end{itemize}
 \end{frame}
 
 \begin{frame}
-    \frametitle{OpenStreetMap API}
+    \frametitle{REST API}
     \begin{itemize}
-        \item https://www.programmableweb.com/api/openstreetmap
+        \item Most APIs are REST APIs (Representational State Transfer)
+        \item REST APIs use HTTP methods:
+        \begin{itemize}
+            \item GET --- fetch available information
+            \item POST --- create item
+            \item DELETE --- delete item
+            \item PUT --- modify an existing item
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Any REST API}
-    \begin{itemize}
-        \item https://realpython.com/api-integration-in-python/
-        \item https://www.programmableweb.com/news/how-to-access-any-restful-api-using-r-language/how-to/2017/07/21
-        \item https://realpython.com/flask-connexion-rest-api/
-    \end{itemize}
+\begin{frame}[fragile]
+    \frametitle{REST API --- Example}
 
+    For web scraping we only need GET.
+
+\begin{minted}{python}
+import requests
+
+resp = requests.get('https://example.com/items/')
+for item in resp.json():
+    print(item['id'])
+\end{minted}
 \end{frame}
