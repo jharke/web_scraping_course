@@ -1,7 +1,7 @@
 \frametitle{Finding the right button}
 \begin{itemize}
-^^I\item The page buttons are saved as children of the \verb!<div class='ui pagination menu'>! tag.
-^^I\item Their tags are of the form \verb!<a class="item">!.
-^^I\item Unfortunately, the ``Next'' button does not have a unique id/name.
-^^I\item However, using \verb!find_all()!, we can find the list of \verb!<a class="item">! items, look at the last one, and determine if it is a ``Next'' button or not
+	\item The page buttons are saved as children of the \verb!<div class='ui pagination menu'>! tag.
+	\item Their tags are of the form \verb!<a class="item">!.
+	\item Unfortunately, the ``Next'' button does not have a unique id/name.
+	\item However, using \verb!find_all()!, we can find the list of \verb!<a class="item">! items, look at the last one, and determine if it is a ``Next'' button or not
 \end{itemize}

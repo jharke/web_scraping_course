@@ -68,6 +68,14 @@ Do you know
 \end{center}
 \end{frame}
 
+\begin{frame}[fragile]{General steps}
+\begin{enumerate}
+	\item Load a web page and get the source code: Use \verb!requests! for static and \verb!selenium! for dynamic websites
+	\item Convert (``parse'') the source code into a soup object: Use \verb!beautifulsoup4!
+	\item Navigate/search the soup object to get the information you want
+\end{enumerate}
+\end{frame}
+
 \begin{frame}{Example for today}
 \begin{itemize}
 	\item Let's scrape the details of all upcoming BCCP events: \url{http://www.bccp-berlin.de/events/all-events/}
