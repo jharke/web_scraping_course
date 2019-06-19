@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+pip install requests beautifulsoup4 selenium pandas lxml jupyter tweepy world\PYGZus{}bank\PYGZus{}data pandas\PYGZhy{}datareader
+\end{Verbatim}

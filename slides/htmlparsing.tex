@@ -2,16 +2,13 @@
 \begin{itemize}
 	\item After obtaining the HTML source code, how to obtain the information required?
 	\item If the HTML code is well-structured and its tags have (more or less) unique names, we can navigate the HTML elements to get the information we want.
-	\item The {\tt beautifulsoup4} package converts the HTML code into a Python object that can be navigated using properties and functions.
+	\item The \mintinline{python}{beautifulsoup4} package converts the HTML code into a Python object that can be navigated using properties and functions.
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Some HTML terms}
 \begin{itemize}
-	\item Consider 
-		\begin{verbatim}
-<a href="http://www.bccp-berlin.de" target="_blank">BCCP</a>
-\end{verbatim}	 
+	\item Consider \mintinline{html}{<a href="http://www.bccp-berlin.de" target="_blank">BCCP</a>}	 
 	\item HTML Elements
 	\begin{itemize}
 		\item The entire thing is an HTML element. Specifically, it is a link leading to the BCCP website and displayed as "BCCP".
@@ -19,13 +16,13 @@
 	\end{itemize}
 	\item HTML Tags
 	\begin{itemize}
-		\item The start tag of the element above is {\tt <a>} and the end tag is the corresponding {\tt </a>}
+		\item The start tag of the element above is  \mintinline{html}{<a>} and the end tag is the corresponding  \mintinline{html}{</a>}
 		\item Start tag can and sometimes must contain attributes.
 	\end{itemize}
 	\item HTML Attributes
 	\begin{itemize}
-		\item The {\tt <a>} tag contains the attribute {\tt href} and {\tt target}. {\tt href} specifies the destination to which the link should lead and {\tt target="\_blank"} specifies that the link should be opened in a new window.
-		\item For web scraping purposes, the attributes {\tt class} and {\tt id} are usually useful as these are often used to identify certain (groups of) elements.
+		\item The  \mintinline{html}{<a>} tag contains the attribute  \mintinline{html}{href} and  \mintinline{html}{target}.  \mintinline{html}{href} specifies the destination to which the link should lead and  \mintinline{html}{target="\_blank"} specifies that the link should be opened in a new window.
+		\item For web scraping purposes, the attributes  \mintinline{html}{class} and  \mintinline{html}{id} are usually useful as these are often used to identify certain (groups of) elements.
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -38,19 +35,18 @@
 \end{frame}
 
 \begin{frame}[fragile]{HTML document example}
-\begin{verbatim}
+\begin{minted}{html}
 <html>
-<body>
-<p>
-Hi all!
-</p>
-<p>
-Do you know 
-<a href="http://www.bccp-berlin.de" target="_blank">BCCP</a>?
-</p>
-</body>
+ <body>
+  <p>
+   Hi all!
+  </p>
+  <p>
+   Do you know <a href="http://www.bccp-berlin.de" target="_blank">BCCP</a>?
+  </p>
+ </body>
 </html>
-\end{verbatim}
+\end{minted}
 \end{frame}
 
 \begin{frame}[fragile]{Tree structure}
@@ -70,8 +66,8 @@ Do you know
 
 \begin{frame}[fragile]{General steps}
 \begin{enumerate}
-	\item Load a web page and get the source code: Use \verb!requests! for static and \verb!selenium! for dynamic websites
-	\item Convert (``parse'') the source code into a soup object: Use \verb!beautifulsoup4!
+	\item Load a web page and get the source code: Use \mintinline{python}{requests} for static and \mintinline{python}{selenium} for dynamic websites
+	\item Convert (``parse'') the source code into a soup object: Use \mintinline{python}{beautifulsoup4}
 	\item Navigate/search the soup object to get the information you want
 \end{enumerate}
 \end{frame}
@@ -95,7 +91,7 @@ Do you know
 	\item Open \url{http://www.bccp-berlin.de/events/all-events/} in a browser and inspect the source code
 	\item Information on events saved in div elements
 \end{itemize}
-\begin{verbatim}
+\begin{minted}{html}
 <div class="eventList">
 ...
 <div class="event-list-item event-type1">...</div>
@@ -103,14 +99,14 @@ Do you know
 <div class="event-list-item event-type2">...</div>
 ...
 </div>
-\end{verbatim}
+\end{minted}
 
 \framebreak
 
 \begin{itemize}
-	\item Details are saved in sub-elements in each \verb!//div[contains(@class,'event-list-item')]! element
+	\item Details are saved in sub-elements in each \mintinline{html}{//div[contains(@class,'event-list-item')]} element
 \end{itemize}
-\begin{verbatim}
+\begin{minted}{html}
 <div class="event-list-item event-type1">
  <div class="top-bar">
   <span class="date single">June 27, 2019</span>
@@ -149,7 +145,7 @@ Do you know
   </div>
  </div>
 </div>
-\end{verbatim}
+\end{minted}
 \end{frame}
 
 \begin{frame}{Getting the data}
@@ -161,12 +157,12 @@ Do you know
 
 \begin{frame}[fragile]{From website to Python soup}
 \begin{enumerate}
-	\item \verb!requests!: Load website and save source code as string
-	\item \verb!BeautifulSoup!: Take source string and parse to get soup object
+	\item \mintinline{python}{requests}: Load website and save source code as string
+	\item \mintinline{python}{beautifulsoup4}: Take source string and parse to get soup object
 		\begin{itemize}
-			\item There are three different parsers: \verb!html.parser!, \verb!lxml!, \verb!html5lib!
+			\item There are three different parsers: \mintinline{python}{html.parser}, \mintinline{python}{lxml}, \mintinline{python}{html5lib}
 			\item Differences are discussed here: \url{https://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-a-parser}
-			\item I usually use \verb!lxml!
+			\item I usually use \mintinline{python}{lxml}
 		\end{itemize}
 	\item Soup object includes functions and attributes that facilitate searching and navigating HTML elements
 \end{enumerate}
@@ -177,13 +173,13 @@ Do you know
 	\item Look at the very good documentation: \url{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}
 	\item You can either \textit{search} the document:
 	\begin{itemize}
-		\item \verb!.find_all()!: Find all elements that match a certain condition. Returns a list.
-		\item \verb!.find()!: Same as \verb!find_all()! but only returns first match.
+		\item \mintinline{python}{.find_all()}: Find all elements that match a certain condition. Returns a list.
+		\item \mintinline{python}{.find()}: Same as \mintinline{python}{.find_all()} but only returns first match.
 	\end{itemize}
 	\item If unique tag names are not available, \textit{navigation} of the HTML tree rather than searching it is possible, e.g.:
 	\begin{itemize}
-		\item Vertically: \verb!.parent!, \verb!.parents!, \verb!.children!
-		\item Horizontally: \verb!.next_sibling!, \verb!.previous_sibling!
+		\item Vertically: \mintinline{python}{.parent}, \mintinline{python}{.parents}, \mintinline{python}{.children}
+		\item Horizontally: \mintinline{python}{.next_sibling}, \mintinline{python}{.previous_sibling}
 	\end{itemize}
 \end{itemize}
 \end{frame}
