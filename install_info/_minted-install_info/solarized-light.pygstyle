@@ -1,0 +1,111 @@
+
+\makeatletter
+\def\PYGsolarized-light@reset{\let\PYGsolarized-light@it=\relax \let\PYGsolarized-light@bf=\relax%
+    \let\PYGsolarized-light@ul=\relax \let\PYGsolarized-light@tc=\relax%
+    \let\PYGsolarized-light@bc=\relax \let\PYGsolarized-light@ff=\relax}
+\def\PYGsolarized-light@tok#1{\csname PYGsolarized-light@tok@#1\endcsname}
+\def\PYGsolarized-light@toks#1+{\ifx\relax#1\empty\else%
+    \PYGsolarized-light@tok{#1}\expandafter\PYGsolarized-light@toks\fi}
+\def\PYGsolarized-light@do#1{\PYGsolarized-light@bc{\PYGsolarized-light@tc{\PYGsolarized-light@ul{%
+    \PYGsolarized-light@it{\PYGsolarized-light@bf{\PYGsolarized-light@ff{#1}}}}}}}
+\def\PYGsolarized-light#1#2{\PYGsolarized-light@reset\PYGsolarized-light@toks#1+\relax+\PYGsolarized-light@do{#2}}
+
+\expandafter\def\csname PYGsolarized-light@tok@\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@c\endcsname{\let\PYGsolarized-light@it=\textit\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.58,0.63,0.63}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@ch\endcsname{\let\PYGsolarized-light@it=\textit\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.58,0.63,0.63}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@cm\endcsname{\let\PYGsolarized-light@it=\textit\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.58,0.63,0.63}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@cp\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.83,0.21,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@cpf\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.58,0.63,0.63}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@k\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.52,0.60,0.00}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@kc\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@kd\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@kn\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.80,0.29,0.09}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@kt\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.71,0.54,0.00}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@o\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.58,0.63,0.63}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@ow\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.52,0.60,0.00}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@n\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@nb\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@bp\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@nc\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@no\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@nd\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@ni\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@ne\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@nf\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@fm\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@nl\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@nn\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@nt\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@nv\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@vg\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@vm\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@l\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@s\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@sd\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.58,0.63,0.63}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@sr\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.80,0.29,0.09}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@m\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@g\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@gd\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.86,0.20,0.18}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@ge\endcsname{\let\PYGsolarized-light@it=\textit\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@gr\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.86,0.20,0.18}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@gh\endcsname{\let\PYGsolarized-light@bf=\textbf\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@gu\endcsname{\let\PYGsolarized-light@ul=\underline\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@gi\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.52,0.60,0.00}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@gs\endcsname{\let\PYGsolarized-light@bf=\textbf\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@gt\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@err\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}\def\PYGsolarized-light@bc##1{\setlength{\fboxsep}{0pt}\colorbox[rgb]{0.86,0.20,0.18}{\strut ##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@w\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@esc\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@x\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@kp\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.52,0.60,0.00}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@kr\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.52,0.60,0.00}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@na\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@py\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@nx\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@vc\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@vi\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.15,0.55,0.82}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@ld\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@sa\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@sb\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@sc\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@dl\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@s2\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@se\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@sh\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@si\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@sx\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@s1\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@ss\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@mb\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@mf\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@mh\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@mi\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@il\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@mo\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.16,0.63,0.60}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@p\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@c1\endcsname{\let\PYGsolarized-light@it=\textit\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.58,0.63,0.63}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@cs\endcsname{\let\PYGsolarized-light@it=\textit\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.58,0.63,0.63}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@go\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+\expandafter\def\csname PYGsolarized-light@tok@gp\endcsname{\def\PYGsolarized-light@tc##1{\textcolor[rgb]{0.40,0.48,0.51}{##1}}}
+
+\def\PYGsolarized-lightZbs{\char`\\}
+\def\PYGsolarized-lightZus{\char`\_}
+\def\PYGsolarized-lightZob{\char`\{}
+\def\PYGsolarized-lightZcb{\char`\}}
+\def\PYGsolarized-lightZca{\char`\^}
+\def\PYGsolarized-lightZam{\char`\&}
+\def\PYGsolarized-lightZlt{\char`\<}
+\def\PYGsolarized-lightZgt{\char`\>}
+\def\PYGsolarized-lightZsh{\char`\#}
+\def\PYGsolarized-lightZpc{\char`\%}
+\def\PYGsolarized-lightZdl{\char`\$}
+\def\PYGsolarized-lightZhy{\char`\-}
+\def\PYGsolarized-lightZsq{\char`\'}
+\def\PYGsolarized-lightZdq{\char`\"}
+\def\PYGsolarized-lightZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYGsolarized-lightZat{@}
+\def\PYGsolarized-lightZlb{[}
+\def\PYGsolarized-lightZrb{]}
+\makeatother
+
