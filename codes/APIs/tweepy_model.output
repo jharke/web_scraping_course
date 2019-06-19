@@ -1,0 +1,32 @@
+
+>>> import tweepy
+>>> from twitter_auth import auth
+>>> api = tweepy.API(auth)
+>>> user = api.get_user('twitter')
+>>> print(user.screen_name)
+Twitter
+>>> print(user.followers_count)
+56238353
+>>> for friend in user.friends():
+...:     print(friend.screen_name)
+TwitterMexico
+TwitterMiami
+TwitterBizJP
+TwitterTogether
+TwitterMediaJP
+TwitterSeguro
+AdsAPI
+pichette
+TwitterA11y
+TwitterComms
+TwitterSportsCA
+TwitterVideoIN
+TwitterREW
+TwitterMktgFR
+JoinTheFlockJP
+TwitterMktgBR
+TwitterSportsJP
+TwitterDevJP
+TwitterMedia
+PeriscopeHelp
+>>> 

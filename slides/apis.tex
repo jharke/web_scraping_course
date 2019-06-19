@@ -22,6 +22,31 @@
         March 2006?''
         \item ``Listen in real-time for Tweets of interest?''
     \end{itemize}
+    Source: \href{https://developer.twitter.com/en/docs/basics/getting-started.html}{https://developer.twitter.com/en/docs/basics/getting-started.html}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Twitter API --- Limits}
+
+    All request windows are 15 minutes in length.
+
+    \begin{table}[]
+        \footnotesize
+        \begin{tabular}{llll}
+          \textbf{Endpoint}           & \textbf{Resource family} & \textbf{Requests / window (user auth)} \\
+          GET followers/list          & followers                & 15                                     \\
+          GET lists/members           & lists                    & 900                                    \\
+          GET lists/statuses          & lists                    & 900                                    \\
+          GET search/tweets           & search                   & 180                                    \\
+          GET statuses/lookup         & statuses                 & 900                                    \\
+          GET statuses/retweeters/ids & statuses                 & 75                                     \\
+          GET statuses/user\_timeline & statuses                 & 900                                    \\
+          GET users/lookup            & users                    & 900                                    \\
+        \end{tabular}
+    \end{table}
+
+    Source: \href{https://developer.twitter.com/en/docs/basics/rate-limits}{https://developer.twitter.com/en/docs/basics/rate-limits}
+
 \end{frame}
 
 \begin{frame}[fragile]
