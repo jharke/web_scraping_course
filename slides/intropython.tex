@@ -124,7 +124,8 @@ followers = {'kevin': 15, 'julian': 9}
     \frametitle{Modules}
     \begin{itemize}
         \item Definitions (functions and variables) can be saved in
-        \textbf{modules}. Our example function can be saved under
+        \textbf{modules}. Our example function
+        \mintinline{python}{list_append()} can be saved in a file
         \mintinline{python}{list_operations.py}.
         \item Such modules can be imported into the interpreter,
         scripts, or other modules.
@@ -181,14 +182,16 @@ f.close() # Manually close a file
 with open('workfile') as f: # with closes file "automatically"
      read_data = f.read()
 \end{minted}
-        \item Several packages offer file operations
-        \mintinline{python}{pandas.read_csv()}
+        \item Several packages offer file operations (e.g.
+        \mintinline{python}{pandas.read_csv()})
     \end{itemize}
 \end{frame}
 
-% \begin{frame}
-%     \frametitle{Further reading}
-%     \begin{itemize}
-%         \item
-%     \end{itemize}
-% \end{frame}
+\begin{frame}
+    \frametitle{Further reading}
+    \begin{itemize}
+        \item \href{https://docs.python.org/3/tutorial/index.html}{Official Python Docs Tutorial}
+        \item \href{https://www.w3schools.com/python/}{W3Schools Python Tutorial}
+        \item \href{http://drivendata.github.io/cookiecutter-data-science/}{Cookiecutter Data Science Project Template}
+    \end{itemize}
+\end{frame}
