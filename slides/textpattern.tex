@@ -21,6 +21,8 @@
         \item \mintinline{bash}{+} match 1 or more repetitions of the preceding RE.
         \item \mintinline{bash}{?} match 0 or 1 repetitions of the preceding RE.
     \end{itemize}
+
+    See: \href{https://www.dataquest.io/wp-content/uploads/2019/03/python-regular-expressions-cheat-sheet.pdf}{Python regex cheat sheet}
 \end{frame}
 
 \begin{frame}[fragile,fragile]
@@ -29,16 +31,17 @@
 import re
 
 # Find all href tags with http(s) link
-links_href = re.findall('href="http[s]?://.*?"', html)
+re.findall('href="http[s]?://.*?"', html)
 
 # Find all href tags with http(s) link and return links only
-links_only = re.findall('href="(http[s]?://.*?")', html)
+re.findall('href="(http[s]?://.*?")', html)
 
 # Find all href tags with http(s) link and split
 links_parts = re.findall('href="(http[s]?)://(.*?)"', html)
 [x[1] for x in links_parts]
 
-# Find all numbers
-re.findall('\\d+\\.?\\d?', html)
+# Find all prices
+prices = re.findall('\\d+\\.?\\d+\\s?€', html)
+prices_clean = [re.sub('[^\\d]', '', x) for x in prices]
 \end{minted}
 \end{frame}

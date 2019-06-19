@@ -1,18 +1,23 @@
 
 import re
+import requests
 
-with open('test.html') as f:
-    html = f.read()
+url = "https://www.ebay-kleinanzeigen.de/s-gewerbeimmobilien/berlin/c277l3331"
+r = requests.get(url)
+html = r.text
 
 # Find all href tags with http(s) link
-links_href = re.findall('href="http[s]?://.*?"', html)
+re.findall('href="http[s]?://.*?"', html)
 
 # Find all href tags with http(s) link and return links only
-links_only = re.findall('href="(http[s]?://.*?")', html)
+re.findall('href="(http[s]?://.*?")', html)
 
 # Find all href tags with http(s) link and split
 links_parts = re.findall('href="(http[s]?)://(.*?)"', html)
 [x[1] for x in links_parts]
 
-# Find all numbers
-re.findall('\\d+\\.?\\d?', html)
+# Find all prices
+prices = re.findall('\\d+\\.?\\d+\\s?€', html)
+prices
+prices_clean = [re.sub('[^\\d]', '', x) for x in prices]
+prices_clean
