@@ -46,7 +46,6 @@
     \end{table}
 
     Source: \href{https://developer.twitter.com/en/docs/basics/rate-limits}{https://developer.twitter.com/en/docs/basics/rate-limits}
-
 \end{frame}
 
 \begin{frame}[fragile]
@@ -223,7 +222,7 @@ wb.get_series('AG.AGR.TRAC.NO', country='ALB')
         \item Most APIs are RESTful APIs (Representational State Transfer)
         \item RESTful APIs use HTTP methods:
         \begin{itemize}
-            \item GET --- fetch available information
+            \item GET --- fetch item
             \item POST --- create item
             \item DELETE --- delete item
             \item PUT --- modify an existing item
@@ -239,8 +238,14 @@ wb.get_series('AG.AGR.TRAC.NO', country='ALB')
 \begin{minted}{python}
 import requests
 
-resp = requests.get('https://example.com/items/')
-for item in resp.json():
-    print(item['id'])
+url = ('http://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/'
+       'nama_10_gdp?geo=EU28&precision=1&na_item=B1GQ&unit=CP_MEUR&'
+       'time=2010&time=2011')
+
+resp = requests.get(url)
+resp_json = resp.json()
+
+resp_json['value']
+resp_json['dimension']['time']['category']['index']
 \end{minted}
 \end{frame}
