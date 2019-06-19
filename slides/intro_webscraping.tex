@@ -10,8 +10,9 @@
 			\item Do the HTML elements have fixed names?
 			\item Does the page load statically or dynamically?
 		\end{itemize}
-		\item Download information from URL
-		\item Turn information into structured data and save
+		\item Load the page and save the source code/API result 
+		\item Convert source code/API result to Python object
+		\item Take wanted information from Python object, convert to DataFrame, and save
 	\end{enumerate}
 \end{itemize}
 \end{frame}
@@ -80,18 +81,55 @@
 % Example of website screenshot and HTML code with random names
 \begin{itemize}
 	\item On static websites, the entire content is loaded immediately. E.g. eBay: \url{https://www.ebay.de/sch/i.html?_nkw=star+wars+blu+ray}
-	\item On dynamic websites, content may not load instantaneously or only after user action, making them usually more complicated to scrape. E.g. Airbnb: \url{https://www.airbnb.de/s/Berlin-Mitte--Berlin/homes?query=Berlin-Mitte\%2C\%20Berlin} (Try disabling JavaScript in your browser and reloading the page).
+	\item On dynamic websites, content may not load instantaneously or only after user action, usually making them more complicated to scrape. E.g. Airbnb: \url{https://www.airbnb.de/s/Berlin-Mitte--Berlin/homes?query=Berlin-Mitte\%2C\%20Berlin} (Try disabling JavaScript in your browser and reloading the page).
 	% Show examples of static and dynamic websites and what happens if loading with requests
 	\item Getting the complete source code from a dynamic website can be done with browser automation. The idea is to open a website in an actual browser (and interacting with it if necessary) and save the source code of the content from there.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Important Python packages}
+\begin{frame}[fragile,allowframebreaks]{Important Python packages}
 \begin{itemize}
-	\item {\tt requests}: To load URL and recover source code (for static web pages)
-	\item {\tt beautifulsoup4}: To turn HTML code to navigable Python object
-	\item {\tt selenium}: For browser automation
-	\item {\tt pandas}: To create DataFrames
+	\item \mintinline{python}{requests}: To load URL and recover source code (for static web pages), e.g.:
+\begin{minted}{python}
+import requests # Import package
+url = "http://www.bccp-berlin.de/events/all-events" # Define URL to load
+r = requests.get(url) # Load URL
+srccode = r.text # Save source code
+\end{minted}
+
+\framebreak
+
+	\item \mintinline{python}{selenium}: For browser automation
+\begin{minted}{python}
+from selenium import webdriver # Import webdriver class from selenium module
+from selenium.webdriver.chrome.options import Options # Load Options class 
+    # from chrome.options to set options for the Chrome webdriver
+chrome_options = Options() # Create instance of Chrome options
+chrome_options.binary_location = browser_app # Set the location where the
+    # browser is located
+driver = webdriver.Chrome(browser_driver, options = chrome_options) # Start
+    # the browser driver (browser_driver contains the location to the
+    # webdriver
+url = "https://www.berlin-econ.de/events" # Define URL to load
+driver.get(url) # Load URL
+html = driver.page_source # Save source code
+\end{minted}
+
+\framebreak
+
+	\item \mintinline{python}{beautifulsoup4}: To turn HTML code to navigable Python object
+\begin{minted}{python}
+from bs4 import BeautifulSoup # Load BeautifulSoup class from bs4 module
+soup = BeautifulSoup(srccode, "lxml") # Convert source code to soup using 
+    # the "lxml" parser
+\end{minted}
+
+	\item \mintinline{python}{pandas}: To create DataFrames
+\begin{minted}{python}
+import pandas as pd # Load pandas module with short-cut pd
+df = pd.DataFrame(resdict).T # Convert dictionary to DataFrame and transpose
+df.to_csv(file_save) # Save df as csv (file_save contains the path to the file)
+\end{minted}
 \end{itemize}
 
 \end{frame}
