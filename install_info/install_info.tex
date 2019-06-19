@@ -5,7 +5,6 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{enumitem}
-
 \usepackage{xcolor}
 
 \usepackage{minted}
@@ -41,30 +40,38 @@ We would like to make the course as interactive as possible. So if you would lik
 
 As we are using Python during the course, you will need a working installation of Python (ideally Python 3.7). Installing Python can cause various complications on bad days, so doing this before the course is a good idea.
 
-Two good Python distributions are Anaconda (\url{https://www.anaconda.com/distribution/}) and Miniconda (\url{https://docs.conda.io/en/latest/miniconda.html}). Anaconda has the advantage that it has many pre-installed packages. Miniconda has the advantage that it only comes with the most necessary packages and therefore requires less disk space. You can then easily install the packages you need manually. If you decide on one of these distributions, you can follow these steps:
+Two good Python distributions are Anaconda \href{https://www.anaconda.com/distribution/}{(Link)} and Miniconda \href{https://docs.conda.io/en/latest/miniconda.html}{(Link)}. Anaconda has the advantage that it has many pre-installed packages. Miniconda has the advantage that it only comes with the most necessary packages and therefore requires less disk space. You can then easily install the packages you need manually. If you decide on one of these distributions, you can follow these steps:
 
-\paragraph{1. Download the installer} Download the Python 3.7 installer for your operation system for Anaconda (\url{https://www.anaconda.com/distribution/}) or Miniconda (\url{https://docs.conda.io/en/latest/miniconda.html}).
+\paragraph{1. Download the installer} Download the Python 3.7 installer for your operation system for Anaconda \href{https://www.anaconda.com/distribution/}{(Link)} or Miniconda \href{https://docs.conda.io/en/latest/miniconda.html}{(Link)}.
 
 \paragraph{2. Run the installer} Run the downloaded file and follow the instructions.
 
 \paragraph{3. Create a Python environment} This step is not absolutely necessary but we do recommend that you create a Python environment for the course. A Python environment is like a virtual separate Python installation with only the packages you specify. You could also just install all needed packages in your root environment but this may lead to some conflicts sometimes.
-\pagebreak{}
+
+\clearpage{}
 
 In order to create a Python environment proceed as follows:
 \begin{enumerate}
 	\item Open the Terminal/Command Prompt. Alternatively, you can also use the Anaconda Prompt.
-	\item Create a Python 3.7 environment and install all needed packages on the go by typing and entering:
+	\item Create a Python 3.7 environment ``webscraping\_course'' (you can call it however you like) and install all needed packages for the course on the go by typing and entering:
 \begin{minted}[breaklines, breaksymbol=]{bat}
-conda create -n py37 python=3.7 requests beautifulsoup4 selenium pandas lxml jupyter tweepy world_bank_data pandas-datareader
+conda create -n webscraping_course python=3.7 --file requirements.txt
 \end{minted}
-        This will create an environment called ``py37'' (you can call it however you like) with a Python 3.7 install and the packages needed for the course.
 	\begin{itemize}
-		\item If you already have a Python environment or you would just like to root your root environment, you can also simply install the packages by typing and entering:
+            \item Alternatively you can also install all packages that are in the requirements.txt manually by:
+\begin{minted}[breaklines, breaksymbol=]{bat}
+conda create -n webscraping_course python=3.7 requests beautifulsoup4 selenium pandas lxml jupyter tweepy world_bank_data pandas-datareader
+\end{minted}
+            \item Or if you already have a Python environment or you would just like to your root environment, you can also simply install the packages by typing and entering:
 \begin{minted}[breaklines, breaksymbol=]{bat}
 conda install requests beautifulsoup4 selenium pandas lxml jupyter tweepy world_bank_data pandas-datareader
 \end{minted}
+            \item Or if you prefer to use pip:
+\begin{minted}[breaklines, breaksymbol=]{bat}
+pip install -r requirements.txt
+\end{minted}
 	\end{itemize}
-	\item Test if the environment works by activating it using \mintinline{bat}{conda activate py37}
+	\item Test if the environment works by activating it using \mintinline{bat}{conda activate webscraping_course}
 \end{enumerate}
 
 \section{Installing a browser and downloading the corresponding driver}
@@ -82,8 +89,3 @@ In the example script, I will use Google's Chrome browser. Doing the same will r
 If you try any of these steps and get an error, feel free to contact any of us (\href{mailto:julian.harke@wzb.eu}{julian.harke@wzb.eu} or \href{mailto:ktran@diw.de}{ktran@diw.de}) and we will try to help as well as possible.
 
 \end{document}
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: t
-%%% End:
