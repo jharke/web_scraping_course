@@ -57,10 +57,10 @@ In order to create a Python environment proceed as follows:
 \begin{minted}[breaklines, breaksymbol=]{bat}
 conda create -n webscraping_course python=3.7
 \end{minted}
-	\item Activate the new environment: 
+	\item Activate the new environment:
 \begin{minted}{bat}
 conda activate webscraping_course
-\end{minted} 
+\end{minted}
 	If you see a \mintinline{bat}{(webscraping_course)} at the start of the line, everything worked out fine.
 \end{enumerate}
 
@@ -69,12 +69,12 @@ conda activate webscraping_course
 	\item If you would like to use the requirements.txt, proceed as follows:
 	\begin{enumerate}
 		\item Open the Terminal/Command Prompt/Anaconda Prompt.
-		\item Change the current directory to the directory where you saved the requirements.txt. For example: 
+		\item Change the current directory to the directory where you saved the requirements.txt. For example:
 \begin{minted}{bat}
 cd C:\Users\kevin\Downloads
-\end{minted} 
+\end{minted}
 if you saved the file in \mintinline{bat}{C:\Users\kevin\Downloads}
-		\item Install the packages using 
+		\item Install the packages using
 \begin{minted}[breaklines, breaksymbol=]{bat}
 pip install -r requirements.txt
 \end{minted}
@@ -82,7 +82,7 @@ pip install -r requirements.txt
 	\item If you would like to install the packages manually, proceed as follows:
 	\begin{enumerate}
 		\item Open the Terminal/Command Prompt/Anaconda Prompt.
-		\item Install the packages using 
+		\item Install the packages using
 \begin{minted}[breaklines, breaksymbol=]{bat}
 pip install requests beautifulsoup4 selenium pandas lxml jupyter tweepy world_bank_data pandas-datareader
 \end{minted}
@@ -98,6 +98,20 @@ In the example script, I will use Google's Chrome browser. Doing the same will r
 \paragraph{1. Install and locate a browser} Decide on a browser and install it, if you do not already have it on your computer. I will use Google Chrome. Further, find out where the program file of your browser is located on your computer. You will need this to run the script on browser automation.
 
 \paragraph{2. Download a fitting browser driver} Download a driver that fits your browser. Links to the drivers for Chrome, Edge, Firefox, and Safari can be found here: \url{https://selenium-python.readthedocs.io/installation.html#drivers}. Also make sure that the driver version fits your installed browser version. The easiest way to do so is to install/update to the most current version of the browser and download the most current version of the driver. Save the driver somewhere where you will find it later, you will need the location of the file to run the script on browser automation.
+
+\section{Twitter API authentification}
+
+If you wish to work with twitter data you will need the consumer\_key,
+consumer\_secret, access\_token, and access\_token\_secret. Please get
+the keys beforehand. Otherwise you will not be able to run the twitter
+code yourself.
+
+\begin{enumerate}
+    \item Visit following \href{https://realpython.com/twitter-bot-python-tweepy/#creating-twitter-api-authentication-credentials}{Tweepy tutorial}
+    \item Follow the three steps in the section ``Creating Twitter API
+    Authentication Credentials'' to obtain the keys.
+    \item Save them somewhere, so you can use them in the course.
+\end{enumerate}
 
 \section{Feel free to ask}
 
