@@ -1,8 +1,8 @@
 
 import world_bank_data as wb
 
-# GET indicators
-wb.get_indicators(topic=3, source=2)
-
 # Get estimates for the world population:
-wb.get_series('SP.POP.TOTL', date='2010:2018')
+wb.get_series('SP.POP.TOTL', date='2017')
+
+# Get timeseries of "Agricultural machinery, tractors" in Albania
+wb.get_series('AG.AGR.TRAC.NO', country='ALB')

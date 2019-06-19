@@ -182,8 +182,17 @@ tweets = get_tweets(api, '@guardian')
 \begin{frame}
     \frametitle{World Bank API}
     \begin{itemize}
+        \item World Bank APIs provide access to:
+        \begin{itemize}
+            \item Indicators API
+            \item Data Catalog API
+            \item Projects API
+            \item Finances API
+            \item Climate Data API
+        \end{itemize}
         \item Access data without authentication.
-        \item http://api.worldbank.org/v2/
+        \item \href{https://datahelpdesk.worldbank.org/knowledgebase/articles/889386-developer-information-overview}{Worldbank API documentation}
+        \item \href{https://github.com/mwouts/world_bank_data}{world\_bank\_data package documentation}
     \end{itemize}
 \end{frame}
 
@@ -192,18 +201,18 @@ tweets = get_tweets(api, '@guardian')
 \begin{minted}{python}
 import world_bank_data as wb
 
-# GET indicators
-wb.get_indicators(topic=3, source=2)
-
 # Get estimates for the world population:
-wb.get_series('SP.POP.TOTL', date='2010:2018')
+wb.get_series('SP.POP.TOTL', date='2017')
+
+# Get timeseries of "Agricultural machinery, tractors" in Albania
+wb.get_series('AG.AGR.TRAC.NO', country='ALB')
 \end{minted}
 \end{frame}
 
 \begin{frame}
     \frametitle{There might be APIs without a working package}
     \begin{itemize}
-        \item Check more general packages. For example, https://pandas-datareader.readthedocs.io/en/latest/readers/
+        \item Check more general packages. For example, \href{https://pandas-datareader.readthedocs.io/en/latest/readers/}{https://pandas-datareader.readthedocs.io/en/latest/readers/}
         \item Write your own functions.
     \end{itemize}
 \end{frame}
@@ -211,7 +220,7 @@ wb.get_series('SP.POP.TOTL', date='2010:2018')
 \begin{frame}
     \frametitle{RESTful API}
     \begin{itemize}
-        \item Most APIs are RESTful APIs\footnote{RESTful APIs and REST APIs are synonyms.} (Representational State Transfer)
+        \item Most APIs are RESTful APIs (Representational State Transfer)
         \item RESTful APIs use HTTP methods:
         \begin{itemize}
             \item GET --- fetch available information
