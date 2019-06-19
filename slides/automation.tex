@@ -1,8 +1,8 @@
 \begin{frame}[fragile]{Why browser automation?}
 \begin{itemize}
-	\item If the content of a page is loaded dynamically (e.g. with JavaScript), using \verb!requests! could yield an ``empty'' source code.
+	\item If the content of a page is loaded dynamically (e.g. with JavaScript), using \mintinline{python}{requests} could yield an ``empty'' source code.
 	\item Browser automation is then a way to load the page in an actual browser and let the JavaScript load as if you actually visited the page.
-	\item Because this uses an actual browser and a browser driver, this approach is less stable and crashes can occur. Further, loading a page in a browser usually takes more time then loading it in \verb!requests!.
+	\item Because this uses an actual browser and a browser driver, this approach is less stable and crashes can occur. Further, loading a page in a browser usually takes more time then loading it in \mintinline{python}{requests}.
 \end{itemize}
 \end{frame}
 
@@ -12,26 +12,26 @@
 	\item In order to load all events, we need to click on the bottom buttons to navigate through the results pages.
 	\item However, these buttons do not link to a new URL but load content using JavaScript:
 \end{itemize}
-\begin{verbatim}
+\begin{minted}{html}
 <a href="javascript:;" class="item" data-request-success="scroll(0,0)" 
 data-request="onEventSearch" 
 data-request-update="'@events-list': '#event-results'" 
 data-request-data="page:2">Next →</a>
-\end{verbatim}
+\end{minted}
 \end{frame}
 
 \begin{frame}[fragile]{Some technical notes}
 \begin{itemize}
-	\item We will use the \verb!selenium! package
+	\item We will use the \mintinline{python}{selenium} package
 	\begin{itemize}
 		\item It allows you to control a browser from a Python script
 		\item The documentation can be found here: \url{https://selenium-python.readthedocs.io/}
 	\end{itemize}
-	\item Besides \verb!selenium!, you need to have an actual browser installed that you are going to use and a compatible browser driver that \verb!selenium! can use to control the browser
+	\item Besides \mintinline{python}{selenium}, you need to have an actual browser installed that you are going to use and a compatible browser driver that \mintinline{python}{selenium} can use to control the browser
 	\begin{itemize}
 		\item We will use Google's Chrome browser (\url{https://www.google.com/chrome/}) and the corresponding ChromeDriver (\url{http://chromedriver.chromium.org/}). Some parts of the code might have a different syntax for different browsers.
-		\item \verb!selenium!'s documentation includes links to drivers for four popular browsers: \url{https://selenium-python.readthedocs.io/installation.html#drivers}
-		\item The documentation for the various browser driver types in \verb!selenium! can be found here: \url{https://seleniumhq.github.io/selenium/docs/api/py/api.html}
+		\item \mintinline{python}{selenium}'s documentation includes links to drivers for four popular browsers: \url{https://selenium-python.readthedocs.io/installation.html#drivers}
+		\item The documentation for the various browser driver types in \mintinline{python}{selenium} can be found here: \url{https://seleniumhq.github.io/selenium/docs/api/py/api.html}
 		\item Make sure that the driver version fits your installed browser version
 	\end{itemize}
 \end{itemize}
@@ -39,10 +39,10 @@ data-request-data="page:2">Next →</a>
 
 \begin{frame}[fragile]{First, analyze the HTML code of \url{https://www.berlin-econ.de/events}}
 \begin{itemize}
-	\item Events are saved in a \verb!<div class='event-results'>! element
-	\item Inside this, events for different days are separated by a \verb!<div class='event-date-separator'>! element
-	\item The actual events are then saved in a \verb!<div class='ui segments'>! elements, more specifically, in \verb!<div class='ui segment'>! elements
-	\item The buttons to navigate to the next results pages are saved in the last element in \verb!<div class='event-results'>! (\verb!<div class='ui pagination menu'>!)
+	\item Events are saved in a \mintinline{html}{<div class='event-results'>} element
+	\item Inside this, events for different days are separated by a \mintinline{html}{<div class='event-date-separator'>} element
+	\item The actual events are then saved in a \mintinline{html}{<div class='ui segments'>} elements, more specifically, in \mintinline{html}{<div class='ui segment'>} elements
+	\item The buttons to navigate to the next results pages are saved in the last element in \mintinline{html}{<div class='event-results'>} (\mintinline{html}{<div class='ui pagination menu'>})
 	\item Need a mix of navigating and searching the HTML document
 \end{itemize}
 \end{frame}
@@ -50,7 +50,7 @@ data-request-data="page:2">Next →</a>
 \begin{frame}[fragile]{Approach}
 \begin{enumerate}
 	\item Load events page in browser
-	\item Loop through elements in \verb!<div class='event-results'>!
+	\item Loop through elements in \mintinline{html}{<div class='event-results'>}
 	\begin{enumerate}
 		\item If it is a date, save the date
 		\item If it is an event, save the event details
@@ -67,14 +67,14 @@ data-request-data="page:2">Next →</a>
 \begin{frame}[fragile]{Interacting with the webpage}
 \begin{itemize}
 	\item In order to be able to click the button, we need to scroll it into view first
-	\item For this, we need to tell \verb!selenium! where the wanted element is and have it scroll there
+	\item For this, we need to tell \mintinline{python}{selenium} where the wanted element is and have it scroll there
 	\item This can be done e.g. using XPATH syntax
 	\item Typical steps are therefore:
 	\begin{enumerate}
-		\item Find the element in the source code (e.g. \verb!element = driver.find_element_by_xpath(xpath)!, other alternatives here: \url{https://selenium-python.readthedocs.io/locating-elements.html})
-		\item Scroll it into view and click, e.g. \verb!ActionChains(driver).move_to_element(element).click(element).perform()!
+		\item Find the element in the source code (e.g. \mintinline{python}{element = driver.find_element_by_xpath(xpath)}, other alternatives here: \url{https://selenium-python.readthedocs.io/locating-elements.html})
+		\item Scroll it into view and click, e.g. \mintinline{python}{ActionChains(driver).move_to_element(element).click(element).perform()}
 	\end{enumerate}
-	\item See \url{https://seleniumhq.github.io/selenium/docs/api/py/webdriver/selenium.webdriver.common.action_chains.html} for documentation on \verb!ActionChains! and things you can do with it 
+	\item See \url{https://seleniumhq.github.io/selenium/docs/api/py/webdriver/selenium.webdriver.common.action_chains.html} for documentation on \mintinline{python}{ActionChains} and things you can do with it 
 \end{itemize}
 \end{frame}
 
@@ -101,9 +101,9 @@ data-request-data="page:2">Next →</a>
 
 \begin{frame}[fragile]{Finding the right button}
 \begin{itemize}
-	\item The page buttons are saved as children of the \verb!<div class='ui pagination menu'>! tag.
-	\item Their tags are of the form \verb!<a class="item">!.
+	\item The page buttons are saved as children of the \mintinline{html}{<div class='ui pagination menu'>} tag.
+	\item Their tags are of the form \mintinline{html}{<a class="item">}.
 	\item Unfortunately, the ``Next'' button does not have a unique id/name.
-	\item However, using \verb!find_all()!, we can find the list of \verb!<a class="item">! items, look at the last one, and determine if it is a ``Next'' button or not
+	\item However, using \mintinline{python}{.find_all()}, we can find the list of \mintinline{python}{<a class="item">} items, look at the last one, and determine if it is a ``Next'' button or not
 \end{itemize}
 \end{frame}
