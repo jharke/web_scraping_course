@@ -1,0 +1,9 @@
+requests
+pandas
+beautifulsoup4
+lxml
+selenium
+jupyter
+tweepy
+world_bank_data
+pandas-datareader

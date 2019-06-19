@@ -37,14 +37,73 @@ data-request-data="page:2">Next →</a>
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{First, analyze the HTML code of \url{https://www.berlin-econ.de/events}}
+\begin{itemize}
+	\item Events are saved in a \verb!<div class='event-results'>! element
+	\item Inside this, events for different days are separated by a \verb!<div class='event-date-separator'>! element
+	\item The actual events are then saved in a \verb!<div class='ui segments'>! elements, more specifically, in \verb!<div class='ui segment'>! elements
+	\item The buttons to navigate to the next results pages are saved in the last element in \verb!<div class='event-results'>! (\verb!<div class='ui pagination menu'>!)
+	\item Need a mix of navigating and searching the HTML document
+\end{itemize}
+\end{frame}
+
 \begin{frame}[fragile]{Approach}
 \begin{enumerate}
 	\item Load events page in browser
-	\item Save information available on all events
-	\item Click to the next page
-	\item Repeat until no other next page available
+	\item Loop through elements in \verb!<div class='event-results'>!
+	\begin{enumerate}
+		\item If it is a date, save the date
+		\item If it is an event, save the event details
+		\item If it is the buttons, click the button for the next page, if available.
+	    \item Repeat until no other next page available
+	\end{enumerate}
+	\item Turn to DataFrame and save
 \end{enumerate}
 \begin{itemize}
 	\item See \verb!automation.ipynb!
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Interacting with the webpage}
+\begin{itemize}
+	\item In order to be able to click the button, we need to scroll it into view first
+	\item For this, we need to tell \verb!selenium! where the wanted element is and have it scroll there
+	\item This can be done e.g. using XPATH syntax
+	\item Typical steps are therefore:
+	\begin{enumerate}
+		\item Find the element in the source code (e.g. \verb!element = driver.find_element_by_xpath(xpath)!, other alternatives here: \url{https://selenium-python.readthedocs.io/locating-elements.html})
+		\item Scroll it into view and click, e.g. \verb!ActionChains(driver).move_to_element(element).click(element).perform()!
+	\end{enumerate}
+	\item See \url{https://seleniumhq.github.io/selenium/docs/api/py/webdriver/selenium.webdriver.common.action_chains.html} for documentation on \verb!ActionChains! and things you can do with it 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Waits}
+\begin{itemize}
+	\item It can occur that the page is not finished loading when the script continues and converts the source code
+	\item To prevent this, Waits can be used
+	\item There are two main types of Waits:
+	\begin{itemize}
+		\item Explicit Waits: Explicitly waits until a condition is fulfilled or a maximum time is reached
+		\item Implicit Waits: Usually set once and is a maximum waiting time whenever some element is looked for
+	\end{itemize}
+	\item More details here: \url{https://selenium-python.readthedocs.io/waits.html}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Explicit Waits with Expected Conditions}
+\begin{itemize}
+	\item What often comes in handy in browser automation are Explicit Waits with Expected Conditions
+	\item Here, you can let the script pause until e.g. some element is visible on the web page
+	\item Selenium features some methods that should be enough for most use cases: See Section 7.39 at \url{https://selenium-python.readthedocs.io/api.html}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Finding the right button}
+\begin{itemize}
+	\item The page buttons are saved as children of the \verb!<div class='ui pagination menu'>! tag.
+	\item Their tags are of the form \verb!<a class="item">!.
+	\item Unfortunately, the ``Next'' button does not have a unique id/name.
+	\item However, using \verb!find_all()!, we can find the list of \verb!<a class="item">! items, look at the last one, and determine if it is a ``Next'' button or not
 \end{itemize}
 \end{frame}
