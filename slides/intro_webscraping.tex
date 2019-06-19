@@ -48,7 +48,12 @@
 % Example of website screenshot and HTML code
 \begin{itemize}
 	\item Use structure of HTML code to find needed information.
-	\item Works best if the code is well-structured and element names are fixed.
+	\item Works best if the source code has a fixed structure and element names are constant or follow some pattern.
+	\item Two basic concepts: Navigation and searching
+	\begin{itemize}
+		\item Navigation: Start at one point of the HTML document and navigate along the structure of the document (e.g. go to children tags or sibling tags)
+		\item Searching: Search for specific HTML elements using their tag name (e.g. \mintinline{html}{<div>} or \mintinline{html}{<span>}) and values of attributes like \mintinline{html}{class} or \mintinline{html}{id}
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -65,16 +70,18 @@
 % Example of website screenshot and HTML code with random names
 \begin{itemize}
 	\item If the HTML code is not well-structured or names change, text pattern matching is an alternative.
-	\item Idea: Take text from (parts of) a page and find needed information by matching a regular expression
+	\item Idea: Look at HTML elements in which wanted information is stored, identify patterns, and match using a regular expression
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Example of website without clear HTML tag names: Airbnb}
+\begin{frame}[fragile]{Example of website without clear HTML tag names: Airbnb}
 \begin{itemize}
 	\item Search for homes in Berlin-Mitte: \url{https://www.airbnb.de/s/Berlin-Mitte--Berlin/homes?query=Berlin-Mitte\%2C\%20Berlin}
-	\item Say you wanted to get the number of results for this search. The element does not have a clear name. Using HTML parsing is still possible but is prone to errors. Instead, one could match on a regular expression.
+	\item Say you wanted to get the number of results for this search. The element does not have a clear name. Using HTML parsing is still possible but is prone to errors. Instead, one could match on a regular expression, e.g.
+\begin{minted}{html}
+re.findall('[0-9]{1,2} - [0-9]{1,2} von ([0-9 +]+) Unterkünfte', srccode)
+\end{minted}
 \end{itemize}
-
 \end{frame}
 
 \begin{frame}{Static vs dynamic websites}
