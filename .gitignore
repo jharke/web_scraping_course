@@ -12,5 +12,6 @@
 */auto/
 *~
 /results
-/slides/_minted-slides/
+_minted-*/
 __pycache__
+.ipynb_checkpoints/
