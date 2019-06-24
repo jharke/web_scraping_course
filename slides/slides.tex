@@ -24,7 +24,7 @@ subsectionpage=progressbar
 \usepackage{amssymb}
 \usepackage{graphicx}
 % \usepackage{eurosym}
-\usepackage{hyperref}
+% \usepackage{hyperref}
 % \usepackage{media9}
 % \usepackage{menukeys}
 \usepackage{lmodern,textcomp}
@@ -44,6 +44,10 @@ subsectionpage=progressbar
 
 \usepackage{babel}
 % \usepackage{pgf}
+
+\renewcommand\UrlFont{\color{blue}}
+\let\oldhref\href
+\renewcommand{\href}[2]{\oldhref{#1}{\color{blue}{#2}}}
 
 \begin{document}
 \title[Web scraping]{BCCP Web Scraping Course}
