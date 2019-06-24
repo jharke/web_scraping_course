@@ -19,5 +19,7 @@ links_parts = re.findall('href="(http[s]?)://(.*?)"', html)
 # Find all prices
 prices = re.findall('\\d+\\.?\\d+\\s?€', html)
 prices
+
+# Clean up all prices
 prices_clean = [re.sub('[^\\d]', '', x) for x in prices]
 prices_clean
