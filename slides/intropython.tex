@@ -99,6 +99,30 @@ followers = {'kevin': 15, 'julian': 9}
 \end{frame}
 
 \begin{frame}[fragile]
+    \frametitle{For loops}
+
+    Python for statement iterates over the members of a sequence in
+    order, executing the block each time.
+
+    Creating a list of each iterations output:
+
+    \begin{minted}{python}
+>>> mylist = []
+>>> for x in [1, 2, 3]:
+...     mylist.append(x**2)
+>>> mylist
+[1, 4, 9]
+\end{minted}
+
+    Same, but shorter:
+
+\begin{minted}{python}
+>>> [x**2 for x in [1, 2, 3]]
+[1, 4, 9]
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
     \frametitle{Functions}
     \begin{itemize}
         \item  \mintinline{python}{def} defines a function.
