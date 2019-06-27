@@ -21,11 +21,11 @@
 \begin{frame}[fragile]
     \frametitle{Python interpreter --- interactive mode}
     \begin{itemize}
-        \item input prompt \mintinline{python}{>>>}
-        \item comments \mintinline{python}{#}
-        \item operators \mintinline{python}{+}, \mintinline{python}{-}, \mintinline{python}{*} and \mintinline{python}{/}
+        \item input prompt \mintinline{pycon}{>>>}
+        \item comments \mintinline{pycon}{#}
+        \item operators \mintinline{pycon}{+}, \mintinline{pycon}{-}, \mintinline{pycon}{*} and \mintinline{pycon}{/}
     \end{itemize}
-\begin{minted}{python}
+\begin{minted}{pycon}
 >>> 2 + 2
 4
 >>> 8 / 5  # division always returns a floating point number
@@ -38,12 +38,12 @@
 \begin{frame}[fragile]
     \frametitle{Python data structures}
     \begin{itemize}
-        \item Lists (\mintinline{python}{value})\\
-\begin{minted}{python}
+        \item Lists (\mintinline{pycon}{value})\\
+\begin{minted}{pycon}
 squares = [1, 4, 9, 16, 25]
 \end{minted}
-        \item Dictionaries (\mintinline{python}{key: value})\\
-\begin{minted}{python}
+        \item Dictionaries (\mintinline{pycon}{key: value})\\
+\begin{minted}{pycon}
 followers = {'kevin': 15, 'julian': 9}
 \end{minted}
     \end{itemize}
@@ -51,7 +51,7 @@ followers = {'kevin': 15, 'julian': 9}
 
 \begin{frame}[fragile]
     \frametitle{Python data structures --- Lists}
-\begin{minted}{python}
+\begin{minted}{pycon}
 >>> squares = [1, 4, 9, 16, 25]
 >>> squares[0]  # indexing returns the item
 1
@@ -68,9 +68,9 @@ followers = {'kevin': 15, 'julian': 9}
 \begin{frame}[fragile]
     \frametitle{Python data structures --- Dictionaries}
     \begin{itemize}
-        \item Dictionaries (\mintinline{python}{key: value})\\
+        \item Dictionaries (\mintinline{pycon}{key: value})\\
         \item Unlike lists, dictionaries are indexed by keys not by positions.
-\begin{minted}{python}
+\begin{minted}{pycon}
 >>> followers = {'kevin': 15, 'julian': 9}
 >>> followers['kevin']
 15
@@ -101,12 +101,12 @@ followers = {'kevin': 15, 'julian': 9}
 \begin{frame}[fragile]
     \frametitle{For loops}
 
-    Python for statement iterates over the members of a sequence in
-    order, executing the block each time.
+    Python's \textbf{for loops} iterate over the members of a
+    sequence, executing the block each time.
 
-    Creating a list of each iterations output:
+    Creating a list that contains the results of all iterations:
 
-    \begin{minted}{python}
+\begin{minted}{pycon}
 >>> mylist = []
 >>> for x in [1, 2, 3]:
 ...     mylist.append(x**2)
@@ -116,8 +116,9 @@ followers = {'kevin': 15, 'julian': 9}
 
     Same, but shorter:
 
-\begin{minted}{python}
->>> [x**2 for x in [1, 2, 3]]
+\begin{minted}{pycon}
+>>> mylist = [x**2 for x in [1, 2, 3]]
+>>> mylist
 [1, 4, 9]
 \end{minted}
 \end{frame}
@@ -125,11 +126,11 @@ followers = {'kevin': 15, 'julian': 9}
 \begin{frame}[fragile]
     \frametitle{Functions}
     \begin{itemize}
-        \item  \mintinline{python}{def} defines a function.
+        \item  \mintinline{pycon}{def} defines a function.
         \item Followed by function name with parenthesized sequence of parameters.
         \item Body of function must be indented.
     \end{itemize}
-\begin{minted}{python}
+\begin{minted}{pycon}
 >>> def list_append(a, mylist=[]):
 ...     """Example documentation string:
 ...     Append value to list. mylist defaults to empty list."""
@@ -149,11 +150,11 @@ followers = {'kevin': 15, 'julian': 9}
     \begin{itemize}
         \item Definitions (functions and variables) can be saved in
         \textbf{modules}. Our example function
-        \mintinline{python}{list_append()} can be saved in a file
-        \mintinline{python}{list_operations.py}.
+        \mintinline{pycon}{list_append()} can be saved in a file
+        \mintinline{pycon}{list_operations.py}.
         \item Such modules can be imported into the interpreter,
         scripts, or other modules.
-\begin{minted}{python}
+\begin{minted}{pycon}
 import list_operations
 list_operations.list_append(1)
 
@@ -163,7 +164,7 @@ list_append(1)
 import list_operations as lo
 lo.list_append(1)
 \end{minted}
-        \item Bad practice: \mintinline{python}{from sound.effects import *}
+        \item Bad practice: \mintinline{pycon}{from sound.effects import *}
     \end{itemize}
 \end{frame}
 
@@ -171,10 +172,10 @@ lo.list_append(1)
     \frametitle{Packages}
     \begin{itemize}
         \item Packages structure modules namespace by using dotted
-        module names. \mintinline{python}{A.B} designates a submodule
-        named \mintinline{python}{B} in a package named
-        \mintinline{python}{A}.
-\begin{minted}{python}
+        module names. \mintinline{pycon}{A.B} designates a submodule
+        named \mintinline{pycon}{B} in a package named
+        \mintinline{pycon}{A}.
+\begin{minted}{pycon}
 import matplotlib.pyplot as plt
 \end{minted}
         \item Packages can be installed with pip.
@@ -192,7 +193,7 @@ pip install -r requirements.txt
     \frametitle{Files}
     \begin{itemize}
         \item Reading and writing files
-\begin{minted}{python}
+\begin{minted}{pycon}
 f = open('workfile', 'r') # read-only
 f = open('workfile', 'w') # write-only
 f = open('workfile', 'a') # appending
@@ -200,14 +201,14 @@ f = open('workfile', 'a') # appending
 f = open('workfile') # read-only, as mode defaults to 'r'
 \end{minted}
         \item Closing files
-\begin{minted}{python}
+\begin{minted}{pycon}
 f.close() # Manually close a file
 
 with open('workfile') as f: # with closes file "automatically"
      read_data = f.read()
 \end{minted}
         \item Several packages offer file operations (e.g.
-        \mintinline{python}{pandas.read_csv()})
+        \mintinline{pycon}{pandas.read_csv()})
     \end{itemize}
 \end{frame}
 
