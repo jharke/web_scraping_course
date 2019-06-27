@@ -8,7 +8,7 @@
 
 \begin{frame}[fragile]{Some HTML terms}
 \begin{itemize}
-	\item Consider \mintinline{html}{<a href="http://www.bccp-berlin.de" target="_blank">BCCP</a>}	 
+	\item Consider \mintinline{html}{<a href="http://www.bccp-berlin.de" target="_blank">BCCP</a>}
 	\item HTML Elements
 	\begin{itemize}
 		\item The entire thing is an HTML element. Specifically, it is a link leading to the BCCP website and displayed as "BCCP".
@@ -21,7 +21,7 @@
 	\end{itemize}
 	\item HTML Attributes
 	\begin{itemize}
-		\item The  \mintinline{html}{<a>} tag contains the attribute  \mintinline{html}{href} and  \mintinline{html}{target}.  \mintinline{html}{href} specifies the destination to which the link should lead and  \mintinline{html}{target="\_blank"} specifies that the link should be opened in a new window.
+		\item The  \mintinline{html}{<a>} tag contains the attribute  \mintinline{html}{href} and  \mintinline{html}{target}.  \mintinline{html}{href} specifies the destination to which the link should lead and  \mintinline{html}{target="_blank"} specifies that the link should be opened in a new window.
 		\item For web scraping purposes, the attributes  \mintinline{html}{class} and  \mintinline{html}{id} are usually useful as these are often used to identify certain (groups of) elements.
 	\end{itemize}
 \end{itemize}
@@ -55,7 +55,7 @@
 \draw (0,0) node[above] {\mintinline{html}{<html>}};
 \draw (0,0) -- (0,-1) node[below] {\mintinline{html}{<body>}};
 \draw (0,-1.5) -- (0,-2);
-\draw (-2,-2.5) node[below] {\mintinline{html}{<p>}} -- (-2,-2) -- (2,-2) -- (2,-2.5) node[below] {\mintinline{html}{<p>}};	
+\draw (-2,-2.5) node[below] {\mintinline{html}{<p>}} -- (-2,-2) -- (2,-2) -- (2,-2.5) node[below] {\mintinline{html}{<p>}};
 \draw (-2,-3) -- (-2,-4) node[below] {Hi all!};
 \draw (2,-3) -- (2,-3.5);
 \draw (1,-4) node[below] {Do you know} -- (1,-3.5) -- (3,-3.5) -- (3,-4) node[below] {\mintinline{html}{<a>}} -- (3,-3.5) -- (5,-3.5) -- (5,-4) node[below] {?};
@@ -74,7 +74,7 @@
 		\item \mintinline{html}{//div/span}: Select all \mintinline{html}{<span>} tags in the HTML document that are children of a \mintinline{html}{<div>} tag, e.g. \mintinline{html}{<div><span></span></div>} but not \mintinline{html}{<div><ul><li><span></span></li></ul></div>}
 
 \framebreak
-		
+
 		\item \mintinline{html}{//div/span[@class='bccp']}: Select all \mintinline{html}{<span>} tags in the HTML document that are children of a \mintinline{html}{<div>} tag and whose \mintinline{html}{class} attribute takes the value `bccp', e.g. \mintinline{html}{<div><span class='bccp'></span></div>} but not \mintinline{html}{<div><span class='bccp course'></span></div>}
 		\item \mintinline{html}{//div/span[contains(@class,'bccp')]}: Select all \mintinline{html}{<span>} tags in the HTML document that are children of a \mintinline{html}{<div>} tag and whose \mintinline{html}{class} attribute value contains `bccp', e.g. \mintinline{html}{<div><span class='bccp course'></span></div>}
 		\item When inspecting source codes in Chrome, you can use XPath to find elements
@@ -157,7 +157,7 @@
    </div>
   </div>
   <div class="button detail">
-   <a title="Felix Holzmeister (University of Innsbruck)" 
+   <a title="Felix Holzmeister (University of Innsbruck)"
    href="/events/all-events/events-detail/
    felix-holzmeister-university-of-innsbruck/">
     Event Details
